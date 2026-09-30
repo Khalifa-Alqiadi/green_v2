@@ -1,0 +1,204 @@
+@layer base {
+    @font-face {
+        font-family: "Velocity Sans";
+        src: url("../fonts/Manrope-Variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Velocity Arabic";
+        src: url("../fonts/Alexandria-Variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+    }
+
+    [data-theme="velocity"] {
+        --color-brand: #55c592;
+        --color-brand-strong: #123f4c;
+        --color-brand-contrast: #082b23;
+        --color-brand-strong-contrast: #ffffff;
+        --color-accent: #73ddb0;
+        --color-surface: #fffefb;
+        --color-surface-muted: #f4f8f5;
+        --color-surface-elevated: #ffffff;
+        --color-surface-soft: #f9fbf9;
+        --color-text: #102b32;
+        --color-text-muted: #5d6f72;
+        --color-border: #dce8e3;
+        --color-border-soft: color-mix(in srgb, var(--color-border) 68%, transparent);
+        --color-control-surface: var(--color-surface-elevated);
+        --color-control-surface-soft: var(--color-surface-soft);
+        --color-control-border: var(--color-border);
+        --color-focus: color-mix(in srgb, var(--color-brand) 82%, white);
+        --gradient-brand: linear-gradient(145deg, var(--color-brand-strong) 0%, color-mix(in srgb, var(--color-brand-strong) 70%, var(--color-brand)) 48%, var(--color-brand) 135%);
+        --color-shell-dark: color-mix(in srgb, var(--color-brand-strong) 76%, #0c4d52);
+        --color-shell-mid: color-mix(in srgb, var(--color-brand-strong) 58%, #147064);
+        --color-shell-accent: color-mix(in srgb, var(--color-brand) 58%, var(--color-brand-strong));
+        --gradient-shell: linear-gradient(160deg, var(--color-shell-dark) 50%, var(--color-shell-mid) 94%, var(--color-shell-accent) 128%);
+        --gradient-soft: linear-gradient(145deg, color-mix(in srgb, var(--color-brand) 10%, var(--color-surface)) 0%, var(--color-surface-muted) 100%);
+        --pattern-dots: radial-gradient(circle, color-mix(in srgb, var(--color-brand) 18%, transparent) 1px, transparent 1.5px);
+        --shadow-sm: 0 1px 2px rgb(10 45 53 / 0.04), 0 10px 30px -22px rgb(10 45 53 / 0.22);
+        --shadow-md: 0 24px 60px -34px rgb(10 45 53 / 0.32);
+        --shadow-lg: 0 40px 100px -48px rgb(10 45 53 / 0.48);
+        --radius-sm: 1rem;
+        --radius-md: 1.5rem;
+        --radius-lg: 2rem;
+        --radius-xl: 2.5rem;
+        --radius-pill: 999px;
+        --container-content: 78rem;
+        --container-wide: 90rem;
+        --section-space: clamp(1.5rem, 5vw, 4.75rem);
+        --motion-fast: 180ms;
+        --motion-medium: 380ms;
+        --motion-slow: 520ms;
+        color: var(--color-text);
+        background: var(--color-surface);
+        color-scheme: light;
+        font-family: "Velocity Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        text-align: start;
+        scroll-behavior: smooth;
+    }
+
+    [data-theme="velocity"][data-appearance="dark"] {
+        --color-surface: #07191e;
+        --color-surface-muted: #0c242b;
+        --color-surface-elevated: #102c34;
+        --color-surface-soft: #0a2026;
+        --color-text: #f4faf7;
+        --color-text-muted: #bbcbc7;
+        --color-border: #29464b;
+        --color-control-surface: color-mix(in srgb, var(--color-brand-strong) 42%, var(--color-surface));
+        --color-control-surface-soft: color-mix(in srgb, var(--color-brand-strong) 24%, var(--color-surface));
+        --color-control-border: color-mix(in srgb, var(--color-brand) 46%, var(--color-surface-elevated));
+        --gradient-soft: linear-gradient(145deg, color-mix(in srgb, var(--color-brand) 8%, var(--color-surface)) 0%, var(--color-surface-muted) 100%);
+        --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+        --shadow-md: 0 12px 30px rgb(0 0 0 / 0.35);
+        --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.45);
+        color-scheme: dark;
+    }
+
+    [data-theme="velocity"][dir="rtl"] {
+        font-family: "Velocity Arabic", "Velocity Sans", Tahoma, Arial, sans-serif;
+    }
+
+    [data-theme="velocity"],
+    [data-theme="velocity"] body {
+        min-height: 100%;
+    }
+
+    [data-theme="velocity"] body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--color-text);
+        background: var(--color-surface);
+        font-size: clamp(1rem, 0.96rem + 0.14vw, 1.075rem);
+        line-height: 1.7;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    [data-theme="velocity"][data-appearance="light"] body {
+        background: #fff;
+    }
+
+    [data-theme="velocity"] *,
+    [data-theme="velocity"] *::before,
+    [data-theme="velocity"] *::after {
+        box-sizing: border-box;
+    }
+
+    [data-theme="velocity"] :where(h1, h2, h3, h4, p) {
+        margin-block-start: 0;
+    }
+
+    [data-theme="velocity"] :where(h1, h2, h3, h4) {
+        color: var(--color-text);
+        font-weight: 650;
+        line-height: 1.08;
+        letter-spacing: -0.045em;
+        text-wrap: balance;
+    }
+
+    [data-theme="velocity"][dir="rtl"] :where(h1, h2, h3, h4) {
+        line-height: 1.24;
+        letter-spacing: 0;
+    }
+
+    [data-theme="velocity"] :where(img, picture, video, canvas, svg, iframe) {
+        display: block;
+        max-width: 100%;
+    }
+
+    [data-theme="velocity"] :where(img, video) {
+        height: auto;
+    }
+
+    [data-theme="velocity"] :where(button, input, select, textarea) {
+        color: inherit;
+        font: inherit;
+    }
+
+    [data-theme="velocity"] :where(button, summary) {
+        cursor: pointer;
+    }
+
+    [data-theme="velocity"] a {
+        color: var(--color-brand);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.18em;
+    }
+
+    [data-theme="velocity"] a:hover {
+        color: var(--color-brand-strong);
+    }
+
+    [data-theme="velocity"] :focus-visible {
+        outline: 3px solid var(--color-focus);
+        outline-offset: 3px;
+        box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-surface) 80%, transparent);
+    }
+
+    [data-theme="velocity"] :where(a, button, input, select, textarea) {
+        transition-duration: var(--motion-fast);
+        transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+    }
+
+    [data-theme="velocity"] ::selection {
+        color: var(--color-brand-contrast);
+        background: var(--color-brand);
+    }
+
+    [data-theme="velocity"] [hidden] {
+        display: none !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-theme="velocity"] *,
+        [data-theme="velocity"] *::before,
+        [data-theme="velocity"] *::after {
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+        }
+    }
+
+    @media (forced-colors: active) {
+        [data-theme="velocity"] :where(a, button, input, select, textarea, summary) {
+            forced-color-adjust: auto;
+        }
+    }
+
+    .contact-page .velocity-container--wide{
+        padding: 0 !important;
+    }
+    .contact-page .velocity-section{
+        padding-top: 0 !important;
+    }
+    .contact-page iframe{
+        border-radius: 30px;
+    }
+}

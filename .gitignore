@@ -1,0 +1,54 @@
+# PHP and JavaScript dependencies
+/core/vendor/
+/core/node_modules/
+
+# Environment files and local credentials
+/core/.env*
+!/core/.env.example
+/core/auth.json
+
+# Laravel generated files
+/core/public/build/
+/core/public/hot
+/core/public/storage
+/core/storage/*.key
+/core/storage/pail/
+/core/storage/logs/*.log
+/core/bootstrap/cache/*.php
+!/core/bootstrap/cache/.gitignore
+
+# Tests and coverage
+/core/.phpunit.cache/
+/core/.phpunit.result.cache
+/core/coverage/
+/core/.phpactor.json
+
+# User-uploaded content
+/uploads
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE and editor settings
+**/.idea/
+**/.vscode/
+**/.fleet/
+**/.nova/
+**/.zed/
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~

@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "./base.css";
+@import "./components.css";
+@import "./header.css";
+@import "./rich-content.css";
+@import "./bootstrap-compat.css";
+@import "./vendor.css";
+@import "./utilities.css";
+
+@source "../../../views/themes/velocity/**/*.blade.php";
+@source "../js/**/*.{js,vue}";
+@source "../../../views/common/recaptcha.blade.php";
+@source inline("hidden sr-only");
+
+@theme {
+    --color-velocity-brand: #2563eb;
+    --color-velocity-brand-strong: #1e3a8a;
+    --color-velocity-accent: #06b6d4;
+    --color-velocity-surface: #ffffff;
+    --color-velocity-surface-muted: #f1f5f9;
+    --color-velocity-text: #0f172a;
+    --color-velocity-text-muted: #475569;
+    --color-velocity-border: #cbd5e1;
+    --radius-velocity-sm: 0.5rem;
+    --radius-velocity-md: 0.875rem;
+    --radius-velocity-lg: 1.25rem;
+}

@@ -1,0 +1,209 @@
+.modern-author-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .25rem .55rem;
+    margin-top: .85rem;
+    font-size: .88rem;
+    line-height: 1.55;
+}
+
+.modern-author-links__label {
+    color: #6c757d;
+    font-size: .8rem;
+}
+
+.modern-author-links__label .bi {
+    color: var(--modern-author-accent);
+    margin-inline-end: .2rem;
+}
+
+.modern-author-links a {
+    color: var(--modern-author-ink);
+    font-weight: 700;
+    text-decoration: none;
+    text-underline-offset: .2em;
+}
+
+.modern-author-links__name {
+    color: var(--modern-author-ink);
+    font-weight: 700;
+}
+
+.modern-author-links__name:not(:last-child)::after {
+    content: ',';
+    color: #9aa4aa;
+    padding-inline-start: .2rem;
+}
+
+.modern-author-links a:not(:last-child)::after {
+    content: ',';
+    color: #9aa4aa;
+    padding-inline-start: .2rem;
+}
+
+.modern-author-links a:hover,
+.modern-author-links a:focus-visible {
+    color: var(--modern-author-accent);
+    text-decoration: underline;
+}
+
+.modern-topic-authors {
+    margin: 1.1rem 0 1.6rem;
+    padding: .8rem 1rem;
+    background: var(--modern-author-surface);
+    border-inline-start: 3px solid var(--modern-author-accent);
+    border-radius: .45rem;
+}
+
+.modern-topic-authors .modern-author-links {
+    margin: 0;
+}
+
+.modern-works-card__authors {
+    padding: 0 1.25rem 1.25rem;
+    background: #fff;
+}
+
+.modern-works-card__authors .modern-author-links {
+    margin: 0;
+}
+
+.modern-author-page {
+    padding: clamp(2rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+}
+
+.modern-author-profile {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    overflow: hidden;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--modern-author-ink) 12%, #fff);
+    border-radius: 1.1rem;
+}
+
+.modern-author-profile::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: min(25%, 14rem);
+    opacity: .1;
+    pointer-events: none;
+    background: repeating-linear-gradient(45deg, transparent 0 1.1rem, var(--modern-author-accent) 1.1rem 1.16rem);
+    mask-image: linear-gradient(to left, #000, transparent);
+}
+
+.modern-author-profile > * {
+    position: relative;
+    z-index: 1;
+}
+
+.modern-author-profile__portrait {
+    display: grid;
+    width: clamp(6.25rem, 12vw, 10rem);
+    aspect-ratio: 1;
+    overflow: hidden;
+    place-items: center;
+    color: var(--modern-author-ink);
+    background: var(--modern-author-surface);
+    border: 3px solid #fff;
+    outline: 1px solid color-mix(in srgb, var(--modern-author-ink) 17%, #fff);
+    border-radius: 50%;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.modern-author-profile__portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modern-author-profile__eyebrow {
+    display: inline-block;
+    margin-bottom: .4rem;
+    color: var(--modern-author-accent);
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.modern-author-profile__copy h2 {
+    margin: 0;
+    color: var(--modern-author-ink);
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    line-height: 1.25;
+}
+
+.modern-author-profile__copy p {
+    margin: .65rem 0 0;
+    color: #6c757d;
+}
+
+.modern-author-profile__count {
+    display: grid;
+    gap: .1rem;
+    min-width: 7rem;
+    padding-inline-start: 1.5rem;
+    border-inline-start: 1px solid #dee2e6;
+    text-align: center;
+    color: #6c757d;
+    font-size: .8rem;
+}
+
+.modern-author-profile__count strong {
+    color: var(--modern-author-ink);
+    font-size: 2.5rem;
+    line-height: 1.1;
+}
+
+.modern-author-page__section-title {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: clamp(2.5rem, 5vw, 4rem) 0 1.5rem;
+}
+
+.modern-author-page__section-title h2 {
+    margin: 0;
+    color: var(--modern-author-ink);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.modern-author-page__section-title span {
+    flex: 1;
+    height: 1px;
+    background: #dee2e6;
+}
+
+.modern-author-page__pagination {
+    margin-top: 2rem;
+}
+
+.modern-author-page__pagination .pagination {
+    justify-content: center;
+}
+
+@media (max-width: 42rem) {
+    .modern-author-profile {
+        grid-template-columns: auto 1fr;
+    }
+
+    .modern-author-profile__count {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: baseline;
+        gap: .5rem;
+        padding: 1rem 0 0;
+        border-inline-start: 0;
+        border-block-start: 1px solid #dee2e6;
+        text-align: start;
+    }
+
+    .modern-author-profile__count strong {
+        font-size: 1.8rem;
+    }
+}

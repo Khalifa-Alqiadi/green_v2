@@ -1,0 +1,39 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "npm run build:base && npm run build:velocity",
+        "build:base": "vite build",
+        "build:velocity": "vite build --config vite.velocity.config.js",
+        "dev": "npm run dev:base",
+        "dev:base": "vite",
+        "dev:velocity": "vite --config vite.velocity.config.js",
+        "test": "npm run test:unit",
+        "test:unit": "vitest run --config vite.velocity.config.js",
+        "test:e2e": "playwright test --pass-with-no-tests",
+        "test:lighthouse:velocity": "lhci autorun --config=lighthouserc.cjs",
+        "test:velocity-build": "node --test tests/Frontend/velocity-build.test.mjs",
+        "test:velocity": "npm run test:unit && npm run build:velocity && npm run test:velocity-build && php artisan test --testsuite=Feature --filter=Velocity"
+    },
+    "dependencies": {
+        "vue": "^3.5.0"
+    },
+    "devDependencies": {
+        "@axe-core/playwright": "^4.10.0",
+        "@lhci/cli": "^0.15.1",
+        "@playwright/test": "^1.50.0",
+        "@popperjs/core": "^2.11.6",
+        "@tailwindcss/vite": "^4.0.0",
+        "@vitejs/plugin-vue": "^6.0.0",
+        "@vue/test-utils": "^2.4.6",
+        "bootstrap": "^5.2.3",
+        "concurrently": "^9.0.1",
+        "jsdom": "^26.0.0",
+        "laravel-vite-plugin": "^3.0.0",
+        "sass": "^1.56.1",
+        "tailwindcss": "^4.0.0",
+        "vite": "^8.0.0",
+        "vitest": "^4.0.0"
+    }
+}

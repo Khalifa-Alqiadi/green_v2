@@ -1,0 +1,279 @@
+@layer components {
+    :is(.velocity-richtext, .velocity-rich-content) :where(.container, .container-fluid) {
+        width: 100%;
+        margin-inline: auto;
+        padding-inline: 0.75rem;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) .row {
+        --velocity-gutter-x: 1.5rem;
+        --velocity-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        margin-block-start: calc(-1 * var(--velocity-gutter-y));
+        margin-inline: calc(-0.5 * var(--velocity-gutter-x));
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) .row > * {
+        width: 100%;
+        max-width: 100%;
+        padding-block-start: var(--velocity-gutter-y);
+        padding-inline: calc(0.5 * var(--velocity-gutter-x));
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) .col {
+        flex: 1 0 0%;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) [class*="col-"] {
+        flex: 0 0 auto;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) .col-auto { flex: 0 0 auto; width: auto; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-1 { flex: 0 0 auto; width: 8.333333%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-2 { flex: 0 0 auto; width: 16.666667%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-3 { flex: 0 0 auto; width: 25%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-4 { flex: 0 0 auto; width: 33.333333%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-5 { flex: 0 0 auto; width: 41.666667%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-6 { flex: 0 0 auto; width: 50%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-7 { flex: 0 0 auto; width: 58.333333%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-8 { flex: 0 0 auto; width: 66.666667%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-9 { flex: 0 0 auto; width: 75%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-10 { flex: 0 0 auto; width: 83.333333%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-11 { flex: 0 0 auto; width: 91.666667%; }
+    :is(.velocity-richtext, .velocity-rich-content) .col-12 { flex: 0 0 auto; width: 100%; }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.btn) {
+        display: inline-flex;
+        min-height: 2.5rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.55rem 1rem;
+        color: var(--color-text);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        line-height: 1.4;
+        text-decoration: none;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.btn:hover, .btn:focus-visible) {
+        color: var(--color-brand);
+        border-color: var(--color-brand);
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.btn-primary, .btn-success, .btn-info) {
+        color: var(--color-brand-contrast);
+        background: var(--color-brand);
+        border-color: var(--color-brand);
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.btn-secondary, .btn-light, .btn-outline-primary) {
+        color: var(--color-brand);
+        background: var(--color-surface-muted);
+        border-color: var(--color-brand);
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.btn-danger, .btn-warning) {
+        color: #fff;
+        background: #b91c1c;
+        border-color: #b91c1c;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) .btn-sm { min-height: 2rem; padding: 0.3rem 0.65rem; font-size: 0.875rem; }
+    :is(.velocity-richtext, .velocity-rich-content) .btn-lg { min-height: 3rem; padding: 0.75rem 1.35rem; font-size: 1.125rem; }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.table) {
+        width: 100%;
+        color: var(--color-text);
+        vertical-align: top;
+        border-collapse: collapse;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.table-striped > tbody > tr:nth-of-type(odd) > *) {
+        background: var(--color-surface-muted);
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.table-bordered > :not(caption) > * > *) {
+        border: 1px solid var(--color-border);
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.img-fluid) { max-width: 100%; height: auto; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.w-25) { width: 25%; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.w-50) { width: 50%; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.w-75) { width: 75%; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.w-100) { width: 100%; }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.card) {
+        overflow: hidden;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+    }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.card-body) { padding: 1.25rem; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.card-title) { margin-block: 0 0.75rem; }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.alert) {
+        margin-block: 1rem;
+        padding: 1rem;
+        background: var(--color-surface-muted);
+        border: 1px solid var(--color-border);
+        border-inline-start: 0.3rem solid var(--color-brand);
+        border-radius: var(--radius-sm);
+    }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.alert-danger) { border-inline-start-color: #dc2626; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.alert-success) { border-inline-start-color: #15803d; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.alert-warning) { border-inline-start-color: #d97706; }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.badge) {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        color: var(--color-brand-contrast);
+        background: var(--color-brand);
+        border-radius: 999px;
+        font-size: 0.75em;
+        font-weight: 700;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.ratio, .embed-responsive) {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+    }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.ratio, .embed-responsive) > :where(iframe, video, embed, object) {
+        width: 100%;
+        height: 100%;
+    }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.d-none) { display: none !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.d-block) { display: block !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.d-inline) { display: inline !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.d-inline-block) { display: inline-block !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.d-flex) { display: flex !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.d-grid) { display: grid !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.text-start, .text-left) { text-align: start !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.text-center) { text-align: center !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.text-end, .text-right) { text-align: end !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.float-start, .float-left) { float: inline-start; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.float-end, .float-right) { float: inline-end; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.clearfix)::after { display: block; clear: both; content: ""; }
+
+    :is(.velocity-richtext, .velocity-rich-content) :where(.m-0) { margin: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.m-1) { margin: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.m-2) { margin: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.m-3) { margin: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.m-4) { margin: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.m-5) { margin: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-auto) { margin-inline: auto !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-0) { margin-inline: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-1) { margin-inline: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-2) { margin-inline: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-3) { margin-inline: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-4) { margin-inline: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mx-5) { margin-inline: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.my-0) { margin-block: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.my-1) { margin-block: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.my-2) { margin-block: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.my-3) { margin-block: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.my-4) { margin-block: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.my-5) { margin-block: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mt-0) { margin-block-start: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mt-1) { margin-block-start: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mt-2) { margin-block-start: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mt-3) { margin-block-start: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mt-4) { margin-block-start: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mt-5) { margin-block-start: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mb-0) { margin-block-end: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mb-1) { margin-block-end: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mb-2) { margin-block-end: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mb-3) { margin-block-end: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mb-4) { margin-block-end: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.mb-5) { margin-block-end: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.p-0) { padding: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.p-1) { padding: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.p-2) { padding: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.p-3) { padding: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.p-4) { padding: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.p-5) { padding: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.px-0) { padding-inline: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.px-1) { padding-inline: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.px-2) { padding-inline: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.px-3) { padding-inline: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.px-4) { padding-inline: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.px-5) { padding-inline: 3rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.py-0) { padding-block: 0 !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.py-1) { padding-block: 0.25rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.py-2) { padding-block: 0.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.py-3) { padding-block: 1rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.py-4) { padding-block: 1.5rem !important; }
+    :is(.velocity-richtext, .velocity-rich-content) :where(.py-5) { padding-block: 3rem !important; }
+
+    @media (min-width: 36rem) {
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-1 { flex: 0 0 auto; width: 8.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-2 { flex: 0 0 auto; width: 16.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-3 { flex: 0 0 auto; width: 25%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-4 { flex: 0 0 auto; width: 33.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-5 { flex: 0 0 auto; width: 41.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-6 { flex: 0 0 auto; width: 50%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-7 { flex: 0 0 auto; width: 58.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-8 { flex: 0 0 auto; width: 66.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-9 { flex: 0 0 auto; width: 75%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-10 { flex: 0 0 auto; width: 83.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-11 { flex: 0 0 auto; width: 91.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-sm-12 { flex: 0 0 auto; width: 100%; }
+    }
+
+    @media (min-width: 48rem) {
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-1 { flex: 0 0 auto; width: 8.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-2 { flex: 0 0 auto; width: 16.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-3 { flex: 0 0 auto; width: 25%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-4 { flex: 0 0 auto; width: 33.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-5 { flex: 0 0 auto; width: 41.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-6 { flex: 0 0 auto; width: 50%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-7 { flex: 0 0 auto; width: 58.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-8 { flex: 0 0 auto; width: 66.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-9 { flex: 0 0 auto; width: 75%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-10 { flex: 0 0 auto; width: 83.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-11 { flex: 0 0 auto; width: 91.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-md-12 { flex: 0 0 auto; width: 100%; }
+    }
+
+    @media (min-width: 62rem) {
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-1 { flex: 0 0 auto; width: 8.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-2 { flex: 0 0 auto; width: 16.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-3 { flex: 0 0 auto; width: 25%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-4 { flex: 0 0 auto; width: 33.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-5 { flex: 0 0 auto; width: 41.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-6 { flex: 0 0 auto; width: 50%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-7 { flex: 0 0 auto; width: 58.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-8 { flex: 0 0 auto; width: 66.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-9 { flex: 0 0 auto; width: 75%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-10 { flex: 0 0 auto; width: 83.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-11 { flex: 0 0 auto; width: 91.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-lg-12 { flex: 0 0 auto; width: 100%; }
+    }
+
+    @media (min-width: 75rem) {
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-1 { flex: 0 0 auto; width: 8.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-2 { flex: 0 0 auto; width: 16.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-3 { flex: 0 0 auto; width: 25%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-4 { flex: 0 0 auto; width: 33.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-5 { flex: 0 0 auto; width: 41.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-6 { flex: 0 0 auto; width: 50%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-7 { flex: 0 0 auto; width: 58.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-8 { flex: 0 0 auto; width: 66.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-9 { flex: 0 0 auto; width: 75%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-10 { flex: 0 0 auto; width: 83.333333%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-11 { flex: 0 0 auto; width: 91.666667%; }
+        :is(.velocity-richtext, .velocity-rich-content) .col-xl-12 { flex: 0 0 auto; width: 100%; }
+    }
+}

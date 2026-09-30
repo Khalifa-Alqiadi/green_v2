@@ -1,0 +1,781 @@
+.modern-hero {
+    --hero-accent: #0cbaa4;
+    --hero-surface: #07110f;
+    --hero-text: #fff;
+    --hero-on-accent: #fff;
+    --hero-on-light: #2e3e4e;
+    --hero-muted: rgba(255, 255, 255, .76);
+    --hero-line: rgba(255, 255, 255, .3);
+    --hero-line-soft: rgba(255, 255, 255, .11);
+    --hero-line-medium: rgba(255, 255, 255, .24);
+    --hero-line-strong: rgba(255, 255, 255, .65);
+    --hero-shade-start: rgba(4, 13, 13, .9);
+    --hero-shade-middle: rgba(4, 13, 13, .72);
+    --hero-shade-soft: rgba(4, 13, 13, .2);
+    --hero-shade-edge: rgba(4, 13, 13, .42);
+    --hero-shade-bottom: rgba(2, 10, 9, .8);
+    --hero-shade-mobile-start: rgba(4, 13, 13, .74);
+    --hero-shade-mobile-end: rgba(4, 13, 13, .32);
+    --hero-shade-mobile-bottom: rgba(2, 10, 9, .92);
+    --hero-shade-mobile-soft: rgba(2, 10, 9, .34);
+    --hero-glass: rgba(8, 22, 20, .34);
+    --hero-glass-soft: rgba(255, 255, 255, .1);
+    --hero-glass-subtle: rgba(255, 255, 255, .08);
+    --hero-cta-border: rgba(255, 255, 255, .46);
+    --hero-text-shadow: rgba(0, 0, 0, .28);
+    --hero-shadow-soft: rgba(0, 0, 0, .16);
+    --hero-shadow: rgba(0, 0, 0, .2);
+    --hero-accent-ring: rgba(12, 186, 164, .65);
+    --hero-accent-glow: rgba(12, 186, 164, .24);
+    --hero-ease: cubic-bezier(.22, 1, .36, 1);
+    position: relative;
+    isolation: isolate;
+}
+
+#hero.modern-hero,
+#hero.modern-hero .modern-hero-carousel,
+#hero.modern-hero .carousel-inner,
+#hero.modern-hero .carousel-item {
+    width: 100%;
+    height: clamp(620px, 78svh, 880px);
+}
+
+#hero.modern-hero {
+    padding: 0;
+    overflow: hidden;
+    background: var(--hero-surface);
+}
+
+.modern-hero-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+#hero.modern-hero .carousel-inner {
+    overflow: hidden;
+}
+
+#hero.modern-hero .carousel-item {
+    position: relative;
+    opacity: 0;
+    overflow: hidden;
+    background: var(--hero-surface);
+    transition: opacity 1.15s var(--hero-ease);
+}
+
+#hero.modern-hero .carousel-item::before {
+    display: none;
+}
+
+#hero.modern-hero .carousel-item.active,
+#hero.modern-hero .carousel-item-next.carousel-item-start,
+#hero.modern-hero .carousel-item-prev.carousel-item-end {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 1.15s var(--hero-ease);
+}
+
+#hero.modern-hero .carousel-item.active.carousel-item-start,
+#hero.modern-hero .carousel-item.active.carousel-item-end {
+    opacity: 0;
+    z-index: 0;
+}
+
+.modern-hero-media,
+.modern-hero-shade,
+.modern-hero-orbit {
+    position: absolute;
+    inset: 0;
+}
+
+.modern-hero-media {
+    overflow: hidden;
+    transform: scale(1.025);
+    clip-path: inset(0 0 0 7%);
+    transition: clip-path 1.3s var(--hero-ease), transform 1.6s var(--hero-ease);
+}
+
+[dir="rtl"] .modern-hero-media {
+    clip-path: inset(0 7% 0 0);
+}
+
+.carousel-item.active .modern-hero-media,
+.carousel-item-next.carousel-item-start .modern-hero-media,
+.carousel-item-prev.carousel-item-end .modern-hero-media {
+    clip-path: inset(0);
+    transform: scale(1);
+}
+
+.modern-hero-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(.9) contrast(1.04);
+    transform: scale(1.08);
+    will-change: transform;
+}
+
+.carousel-item.active .modern-hero-image {
+    animation: modern-hero-image 7.2s ease-out both;
+}
+
+.modern-hero-shade {
+    z-index: 1;
+    background:
+        linear-gradient(90deg, var(--hero-shade-start) 0%, var(--hero-shade-middle) 38%, var(--hero-shade-soft) 72%, var(--hero-shade-edge) 100%),
+        linear-gradient(0deg, var(--hero-shade-bottom) 0%, transparent 46%);
+}
+
+[dir="rtl"] .modern-hero-shade {
+    transform: scaleX(-1);
+}
+
+.modern-hero-shade::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .14;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+}
+
+.modern-hero-orbit {
+    z-index: 2;
+    inset-inline-start: auto;
+    inset-inline-end: -13vw;
+    top: -34%;
+    width: min(54vw, 840px);
+    height: min(54vw, 840px);
+    border: 1px solid var(--hero-line-medium);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.modern-hero-orbit::before,
+.modern-hero-orbit::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+
+.modern-hero-orbit::before {
+    inset: 11%;
+    border: 1px solid var(--hero-line-soft);
+}
+
+.modern-hero-orbit::after {
+    inset: 22%;
+    border: 1px solid var(--hero-accent-ring);
+    box-shadow: 0 0 90px var(--hero-accent-glow);
+}
+
+.modern-hero-container {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-top: clamp(78px, 10vh, 126px);
+    padding-bottom: clamp(142px, 18vh, 184px);
+}
+
+#hero .modern-hero-content {
+    width: min(870px, 70%);
+    text-align: start;
+}
+
+.modern-hero-kicker {
+    display: flex;
+    align-items: center;
+    width: min(260px, 42vw);
+    gap: 14px;
+    margin-bottom: 24px;
+    color: var(--hero-text);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .18em;
+}
+
+.modern-hero-kicker i {
+    flex: 1 1 auto;
+    height: 1px;
+    background: linear-gradient(90deg, var(--hero-accent), var(--hero-line));
+}
+
+[dir="rtl"] .modern-hero-kicker i {
+    background: linear-gradient(-90deg, var(--hero-accent), var(--hero-line));
+}
+
+#hero .modern-hero-title {
+    max-width: 16ch;
+    margin: 0;
+    color: var(--hero-text);
+    font-size: clamp(48px, 5.4vw, 88px);
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.052em;
+    text-wrap: balance;
+    text-shadow: 0 3px 34px var(--hero-text-shadow);
+}
+
+#hero .modern-hero-description {
+    width: min(650px, 92%);
+    margin: 30px 0 0;
+    padding: 0;
+    color: var(--hero-muted);
+    font-size: clamp(16px, 1.25vw, 20px);
+    font-weight: 400;
+    line-height: 1.75;
+    text-shadow: 0 2px 16px var(--hero-text-shadow);
+}
+
+#hero .modern-hero-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 19px;
+    min-height: 58px;
+    margin-top: 38px;
+    padding: 7px 8px 7px 27px;
+    overflow: hidden;
+    border: 1px solid var(--hero-cta-border);
+    border-radius: 999px;
+    color: var(--hero-text);
+    background: var(--hero-glass-subtle);
+    box-shadow: 0 14px 50px var(--hero-shadow-soft);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    isolation: isolate;
+    transition: color .35s var(--hero-ease), border-color .35s var(--hero-ease), transform .35s var(--hero-ease);
+}
+
+[dir="rtl"] #hero .modern-hero-cta {
+    padding: 7px 27px 7px 8px;
+}
+
+#hero .modern-hero-cta::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: var(--hero-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s var(--hero-ease);
+}
+
+[dir="rtl"] #hero .modern-hero-cta::before {
+    transform-origin: left;
+}
+
+#hero .modern-hero-cta:hover,
+#hero .modern-hero-cta:focus-visible {
+    color: var(--hero-on-accent);
+    border-color: var(--hero-accent);
+    transform: translateY(-3px);
+}
+
+#hero .modern-hero-cta:hover::before,
+#hero .modern-hero-cta:focus-visible::before {
+    transform: scaleX(1);
+}
+
+.modern-hero-cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    border-radius: 50%;
+    color: var(--hero-on-light);
+    background: var(--hero-text);
+    font-size: 18px;
+    transition: transform .45s var(--hero-ease);
+}
+
+.modern-hero-cta:hover .modern-hero-cta-icon,
+.modern-hero-cta:focus-visible .modern-hero-cta-icon {
+    transform: rotate(45deg);
+}
+
+[dir="rtl"] .modern-hero-cta-icon {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .modern-hero-cta:hover .modern-hero-cta-icon,
+[dir="rtl"] .modern-hero-cta:focus-visible .modern-hero-cta-icon {
+    transform: scaleX(-1) rotate(45deg);
+}
+
+.carousel-item.active .modern-hero-kicker,
+.carousel-item.active .modern-hero-title,
+.carousel-item.active .modern-hero-description,
+.carousel-item.active .modern-hero-cta {
+    animation: modern-hero-reveal .9s var(--hero-ease) both;
+}
+
+.carousel-item.active .modern-hero-kicker {
+    animation-delay: .16s;
+}
+
+.carousel-item.active .modern-hero-title {
+    animation-delay: .27s;
+}
+
+.carousel-item.active .modern-hero-description {
+    animation-delay: .4s;
+}
+
+.carousel-item.active .modern-hero-cta {
+    animation-delay: .52s;
+}
+
+.modern-hero-rail {
+    position: absolute;
+    z-index: 8;
+    inset-inline: 0;
+    bottom: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
+}
+
+#hero .modern-hero-indicators {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    width: min(540px, 58%);
+    margin: 0;
+    padding: 0;
+    pointer-events: auto;
+}
+
+#hero .modern-hero-indicator {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 52px;
+    height: 34px;
+    margin: 0;
+    padding: 0 0 10px;
+    border: 0;
+    border-bottom: 1px solid var(--hero-line);
+    color: var(--hero-muted);
+    background: transparent;
+    text-indent: 0;
+    opacity: 1;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .12em;
+    transition: width .45s var(--hero-ease), color .35s ease, border-color .35s ease;
+}
+
+#hero .modern-hero-indicator::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: var(--hero-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+[dir="rtl"] #hero .modern-hero-indicator::after {
+    transform-origin: right;
+}
+
+#hero .modern-hero-indicator:hover,
+#hero .modern-hero-indicator:focus-visible {
+    color: var(--hero-text);
+    border-color: var(--hero-line-strong);
+}
+
+#hero .modern-hero-indicator:focus-visible,
+.modern-hero-nav:focus-visible,
+#hero .modern-hero-cta:focus-visible {
+    outline: 2px solid var(--hero-text);
+    outline-offset: 4px;
+}
+
+#hero .modern-hero-indicator.active {
+    width: 118px;
+    color: var(--hero-text);
+}
+
+#hero .modern-hero-indicator.active::after {
+    animation: modern-hero-progress 6.5s linear forwards;
+}
+
+.modern-hero-carousel:hover .modern-hero-indicator.active::after,
+.modern-hero-carousel:focus-within .modern-hero-indicator.active::after {
+    animation-play-state: paused;
+}
+
+.modern-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px;
+    border: 1px solid var(--hero-line-medium);
+    border-radius: 999px;
+    background: var(--hero-glass);
+    box-shadow: 0 20px 50px var(--hero-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    margin-inline-start: clamp(24px, 3vw, 48px);
+    pointer-events: auto;
+}
+
+.modern-hero-nav {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 50%;
+    color: var(--hero-text);
+    background: var(--hero-glass-soft);
+    font-size: 20px;
+    transition: color .35s var(--hero-ease), background-color .35s var(--hero-ease), transform .35s var(--hero-ease);
+}
+
+.modern-hero-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--hero-accent);
+    transform: scale(0);
+    transition: transform .45s var(--hero-ease);
+}
+
+.modern-hero-nav i {
+    position: relative;
+    z-index: 1;
+    transition: transform .4s var(--hero-ease);
+}
+
+.modern-hero-nav:hover,
+.modern-hero-nav:focus-visible {
+    color: var(--hero-on-accent);
+    transform: scale(1.06);
+}
+
+.modern-hero-nav:hover::before,
+.modern-hero-nav:focus-visible::before {
+    transform: scale(1);
+}
+
+.modern-hero-prev:hover i,
+.modern-hero-prev:focus-visible i {
+    transform: translateX(-4px);
+}
+
+.modern-hero-next {
+    width: 64px;
+    height: 64px;
+    color: var(--hero-on-accent);
+    background: var(--hero-accent);
+}
+
+.modern-hero-next::before {
+    background: var(--hero-text);
+}
+
+.modern-hero-next:hover,
+.modern-hero-next:focus-visible {
+    color: var(--hero-on-light);
+}
+
+.modern-hero-next:hover i,
+.modern-hero-next:focus-visible i {
+    transform: translateX(4px);
+}
+
+[dir="rtl"] .modern-hero-nav i {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .modern-hero-prev:hover i,
+[dir="rtl"] .modern-hero-prev:focus-visible i {
+    transform: scaleX(-1) translateX(-4px);
+}
+
+[dir="rtl"] .modern-hero-next:hover i,
+[dir="rtl"] .modern-hero-next:focus-visible i {
+    transform: scaleX(-1) translateX(4px);
+}
+
+.modern-hero-carousel.is-static .modern-hero-indicator.active {
+    width: 84px;
+}
+
+.modern-hero-carousel.is-static .modern-hero-indicator.active::after {
+    animation: none;
+    transform: scaleX(1);
+}
+
+@keyframes modern-hero-image {
+    from {
+        transform: scale(1.08);
+    }
+    to {
+        transform: scale(1.015);
+    }
+}
+
+@keyframes modern-hero-reveal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 34px, 0);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+    }
+}
+
+@keyframes modern-hero-progress {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@media (max-width: 991px) {
+    #hero.modern-hero,
+    #hero.modern-hero .modern-hero-carousel,
+    #hero.modern-hero .carousel-inner,
+    #hero.modern-hero .carousel-item {
+        height: clamp(580px, 76svh, 760px);
+    }
+
+    .modern-hero-container {
+        padding-top: 90px;
+        padding-bottom: 142px;
+    }
+
+    #hero .modern-hero-content {
+        width: min(720px, 86%);
+        text-align: start;
+    }
+
+    #hero .modern-hero-title {
+        max-width: 15ch;
+        font-size: clamp(44px, 7vw, 68px);
+    }
+
+    #hero .modern-hero-description {
+        width: min(600px, 100%);
+    }
+
+    .modern-hero-orbit {
+        inset-inline-end: -28vw;
+        top: -10%;
+        width: 78vw;
+        height: 78vw;
+    }
+
+    .modern-hero-rail {
+        bottom: 28px;
+    }
+
+    #hero .modern-hero-indicators {
+        width: 62%;
+    }
+}
+
+@media (max-width: 767px) {
+    #hero.modern-hero,
+    #hero.modern-hero .modern-hero-carousel,
+    #hero.modern-hero .carousel-inner,
+    #hero.modern-hero .carousel-item {
+        height: clamp(570px, 78svh, 700px);
+        min-height: 570px;
+    }
+
+    .modern-hero-media {
+        clip-path: inset(5% 0 0);
+    }
+
+    .carousel-item.active .modern-hero-media,
+    .carousel-item-next.carousel-item-start .modern-hero-media,
+    .carousel-item-prev.carousel-item-end .modern-hero-media {
+        clip-path: inset(0);
+    }
+
+    .modern-hero-shade {
+        background:
+            linear-gradient(90deg, var(--hero-shade-mobile-start), var(--hero-shade-mobile-end)),
+            linear-gradient(0deg, var(--hero-shade-mobile-bottom) 0%, var(--hero-shade-mobile-soft) 74%);
+    }
+
+    .modern-hero-container {
+        align-items: flex-end;
+        padding-top: 80px;
+        padding-bottom: 148px;
+    }
+
+    #hero .modern-hero-content {
+        width: 100%;
+    }
+
+    .modern-hero-kicker {
+        width: 190px;
+        margin-bottom: 18px;
+    }
+
+    #hero .modern-hero-title {
+        max-width: 14ch;
+        font-size: clamp(38px, 11vw, 54px);
+        line-height: 1.02;
+        letter-spacing: -.04em;
+    }
+
+    #hero .modern-hero-description {
+        display: -webkit-box;
+        width: 100%;
+        margin-top: 19px;
+        overflow: hidden;
+        font-size: 15px;
+        line-height: 1.65;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    #hero .modern-hero-cta {
+        min-height: 52px;
+        margin-top: 25px;
+        padding-inline-start: 22px;
+    }
+
+    .modern-hero-cta-icon {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
+
+    .modern-hero-rail {
+        bottom: 22px;
+    }
+
+    #hero .modern-hero-indicators {
+        gap: 8px;
+        width: calc(100% - 132px);
+    }
+
+    #hero .modern-hero-indicator {
+        width: 26px;
+        height: 28px;
+        font-size: 0;
+    }
+
+    #hero .modern-hero-indicator.active {
+        width: 62px;
+    }
+
+    .modern-hero-actions {
+        gap: 5px;
+        padding: 5px;
+        margin-inline-start: auto;
+    }
+
+    .modern-hero-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+    }
+
+    .modern-hero-next {
+        width: 48px;
+        height: 48px;
+    }
+
+    .modern-hero-orbit {
+        display: none;
+    }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+    #hero.modern-hero,
+    #hero.modern-hero .modern-hero-carousel,
+    #hero.modern-hero .carousel-inner,
+    #hero.modern-hero .carousel-item {
+        height: 540px;
+        min-height: 540px;
+    }
+
+    .modern-hero-container {
+        align-items: center;
+        padding-top: 66px;
+        padding-bottom: 92px;
+    }
+
+    #hero .modern-hero-title {
+        font-size: 44px;
+    }
+
+    #hero .modern-hero-description {
+        margin-top: 16px;
+        line-height: 1.5;
+    }
+
+    #hero .modern-hero-cta {
+        margin-top: 20px;
+    }
+
+    .modern-hero-rail {
+        bottom: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #hero.modern-hero .carousel-item {
+        transition-duration: .01ms;
+    }
+
+    .modern-hero-media,
+    .modern-hero-image,
+    .modern-hero-kicker,
+    .modern-hero-title,
+    .modern-hero-description,
+    .modern-hero-cta,
+    #hero .modern-hero-indicator.active::after {
+        animation: none !important;
+        transition-duration: .01ms !important;
+    }
+
+    .modern-hero-media {
+        clip-path: inset(0);
+        transform: none;
+    }
+
+    .modern-hero-image {
+        transform: none;
+    }
+
+    #hero .modern-hero-indicator.active::after {
+        transform: scaleX(1);
+    }
+}

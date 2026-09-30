@@ -1,0 +1,312 @@
+.me-auto, .me-md-auto {
+    margin-left: auto !important
+}
+
+.me-3, .me-auto, .me-md-auto {
+    margin-right: 0 !important
+}
+
+* {
+    font-family: Tajawal, sans-serif
+}
+
+#hero h2, .btn, .categories-list .nav-link span, .navbar .nav-link, h1, h2, h3, h4, h5, h6,.modern-footer-contact-label,.modern-works-title {
+    font-family: Alexandria, sans-serif
+}
+
+.header-dropdown .btn {
+    margin-left: 0;
+    margin-right: 15px;
+    line-height: 13px
+}
+
+#hero .carousel-content, .accordion-item:last-of-type .accordion-button, .dropdown-menu {
+    text-align: right
+}
+
+.navbar .dropdown ul {
+    right: 0;
+    left: auto
+}
+
+.navbar .dropdown .dropdown ul, .navbar .dropdown .dropdown:hover > ul {
+    right: 100%;
+    left: auto
+}
+
+.navbar > ul > li {
+    padding: 8px 25px 23px 0
+}
+
+.navbar-mobile > ul > li {
+    padding: 0
+}
+
+.navbar a .drop-arrow {
+    margin-left: 0;
+    margin-right: 5px
+}
+
+#header-search-box .close, .navbar .dropdown ul a .drop-arrow {
+    right: auto;
+    left: 15px
+}
+
+.navbar .dropdown ul a {
+    padding: 10px 20px 10px 40px
+}
+
+.navbar-mobile .mobile-nav-toggle {
+    right: auto;
+    left: 35px
+}
+
+.navbar .dropdown ul a .fa {
+    margin-right: 0;
+    margin-left: 5px
+}
+
+@media (max-width: 992px) {
+    #hero .carousel-content {
+        text-align: center
+    }
+}
+
+#footer .footer-newsletter form button, .alert-dismissible .btn-close {
+    right: auto;
+    left: 0
+}
+
+.page-popup .btn-close {
+    right: auto !important;
+    left: 12px !important
+}
+
+.alert-dismissible {
+    padding-right: 1rem;
+    padding-left: 3rem
+}
+
+.text-md-start {
+    text-align: right !important
+}
+
+.breadcrumbs ol li + li {
+    padding-left: 0;
+    padding-right: 10px
+}
+
+.breadcrumbs ol li + li::before, .fixed-area-menu {
+    padding-right: 0;
+    padding-left: 10px
+}
+
+.text-end {
+    text-align: left !important
+}
+
+.pagination {
+    padding-right: 0
+}
+
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating), .page-item:first-child .page-link {
+    border-radius: 0 .375rem .375rem 0
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .page-item:last-child .page-link {
+    border-radius: .375rem 0 0 .375rem
+}
+
+.sidebar-list .list-group .list-group .list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: .5rem
+}
+
+.list-group {
+    padding: .5rem
+}
+
+.sidebar-list .list-group .badge {
+    float: left
+}
+
+.extra-images-count {
+    right: auto;
+    left: 18px
+}
+
+.me-3 {
+    margin-left: 1rem !important
+}
+
+.contact .info i {
+    float: right
+}
+
+.contact .info h4, .contact .info p {
+    padding: 0 60px 0 0;
+    font-size: 16px
+}
+
+.back-to-top {
+    right: 25px;
+    left: auto
+}
+
+.whatsapp_float {
+    left: 15px;
+    right: auto
+}
+
+.form-switch {
+    padding-right: 2.5em;
+    padding-left: 0
+}
+
+.form-check .form-check-input {
+    float: right;
+    margin-right: -1.6em;
+    margin-left: 0
+}
+
+.accordion-button::after {
+    margin-right: auto;
+    margin-left: 0
+}
+
+.header-form-search .btn {
+    left: 0;
+    right: auto;
+    padding: 4px 8px
+}
+
+.header-form-search .form-control {
+    padding: 5px 8px 1px
+}
+
+.staff .staff-member-arrow i,
+.staff .staff-cta-arrow,
+.staff .staff-slider-button i,
+.modern-works-slider-button i,
+.modern-works-arrow i,.btn-theme i {
+    transform: scaleX(-1)
+}
+
+.modern-works-card-link:hover .modern-works-arrow,
+.modern-works-card-link:focus-visible .modern-works-arrow {
+    transform: translateX(-4px)
+}
+
+.testimonials .testimonial-author {
+    text-align: right
+}
+
+.testimonials .testimonial-quote {
+    align-items: flex-start;
+    font-style: normal;
+    text-align: right
+}
+
+.cookies-accept {
+    left: 0;
+    right: auto
+}
+
+@media screen and (max-width: 767px) {
+    .whatsapp-icon {
+        margin-top: 10px
+    }
+
+    .whatsapp_float {
+        bottom: 20px;
+        left: 10px;
+        right: auto
+    }
+
+}
+
+.form-check {
+    padding-right: 1.5em;
+    padding-left: 0
+}
+
+.iti .iti__selected-dial-code {
+    margin-right: 4px;
+    margin-left: 0;
+    direction: ltr
+}
+
+.iti__selected-country, .iti__selected-country-primary {
+    flex-direction: row-reverse
+}
+
+.iti--inline-dropdown .iti__dropdown-content {
+    left: 0;
+    direction: ltr
+}
+
+.appearance-toggle .checkbox-label .ball {
+    right: 4px;
+    left: auto
+}
+
+.appearance-toggle .checkbox:checked + .checkbox-label .ball {
+    transform: translateX(-60px)
+}
+
+#appearance-toggle-title {
+    display: inline-block;
+    margin-top: 3px
+}
+
+.dashboard_Link {
+    margin-right: 5px;
+    margin-left: 0;
+    line-height: 13px
+}
+
+.contact-card .contact-icon {
+    margin-left: 15px;
+    margin-right: 0
+}
+
+.topic-nav-prev {
+    text-align: right;
+}
+
+.topic-nav-next {
+    text-align: left;
+}
+
+.topic-nav-prev .topic-nav-icon {
+    margin-left: 1rem !important;
+    margin-right: 0 !important;
+}
+
+.topic-nav-next .topic-nav-icon {
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+}
+
+.topic-nav-prev .fa-angle-left::before {
+    content: "\f105";
+}
+
+.topic-nav-next .fa-angle-right::before {
+    content: "\f104";
+}
+.modern-footer-contact-value {
+    font-family: Tajawal, sans-serif
+}
+#footer .modern-footer-contact-icon{
+    line-height: 20px;
+}
+.modern-works-title {
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+.lang-label {
+    float: left;
+}

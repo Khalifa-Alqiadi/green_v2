@@ -1,0 +1,76 @@
+{
+  "node_modules/vue/dist/vue.runtime.esm-bundler.js": {
+    "file": "assets/vue.runtime.esm-bundler-DI52qkQJ.js",
+    "name": "vue.runtime.esm-bundler",
+    "src": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+    "isDynamicEntry": true
+  },
+  "resources/themes/velocity/fonts/Alexandria-Variable.woff2": {
+    "file": "assets/Alexandria-Variable-BMWQQIfH.woff2",
+    "src": "resources/themes/velocity/fonts/Alexandria-Variable.woff2"
+  },
+  "resources/themes/velocity/fonts/Manrope-Variable.woff2": {
+    "file": "assets/Manrope-Variable-DHIcAJRg.woff2",
+    "src": "resources/themes/velocity/fonts/Manrope-Variable.woff2"
+  },
+  "resources/themes/velocity/js/app.js": {
+    "file": "assets/app-DEkIXAeO.js",
+    "name": "app",
+    "src": "resources/themes/velocity/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "resources/themes/velocity/js/components/CmsFormEnhancer.vue",
+      "resources/themes/velocity/js/components/TopicExplorer.vue",
+      "resources/themes/velocity/js/components/VelocityCarousel.vue",
+      "resources/themes/velocity/js/modules/charts.js",
+      "resources/themes/velocity/js/modules/maps.js"
+    ],
+    "css": [
+      "assets/app-CaJvPflC.css"
+    ],
+    "assets": [
+      "assets/Manrope-Variable-DHIcAJRg.woff2",
+      "assets/Alexandria-Variable-BMWQQIfH.woff2"
+    ]
+  },
+  "resources/themes/velocity/js/components/CmsFormEnhancer.vue": {
+    "file": "assets/CmsFormEnhancer-BHSxf8m2.js",
+    "name": "CmsFormEnhancer",
+    "src": "resources/themes/velocity/js/components/CmsFormEnhancer.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/vue/dist/vue.runtime.esm-bundler.js"
+    ]
+  },
+  "resources/themes/velocity/js/components/TopicExplorer.vue": {
+    "file": "assets/TopicExplorer-C1kAhVTD.js",
+    "name": "TopicExplorer",
+    "src": "resources/themes/velocity/js/components/TopicExplorer.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/vue/dist/vue.runtime.esm-bundler.js"
+    ]
+  },
+  "resources/themes/velocity/js/components/VelocityCarousel.vue": {
+    "file": "assets/VelocityCarousel-DspYrEhd.js",
+    "name": "VelocityCarousel",
+    "src": "resources/themes/velocity/js/components/VelocityCarousel.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/vue/dist/vue.runtime.esm-bundler.js"
+    ]
+  },
+  "resources/themes/velocity/js/modules/charts.js": {
+    "file": "assets/charts-Dr8TabC7.js",
+    "name": "charts",
+    "src": "resources/themes/velocity/js/modules/charts.js",
+    "isDynamicEntry": true
+  },
+  "resources/themes/velocity/js/modules/maps.js": {
+    "file": "assets/maps-Bx3jKKps.js",
+    "name": "maps",
+    "src": "resources/themes/velocity/js/modules/maps.js",
+    "isDynamicEntry": true
+  }
+}

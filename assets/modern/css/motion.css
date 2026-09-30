@@ -1,0 +1,166 @@
+:root {
+    --motion-duration: 640ms;
+    --motion-duration-fast: 260ms;
+    --motion-ease: cubic-bezier(.22, 1, .36, 1);
+    --motion-distance: 24px;
+    --motion-distance-side: 28px;
+    --motion-scale: .96
+}
+
+[data-motion-state="pending"] {
+    opacity: 0;
+    transition-property: opacity, transform, filter;
+    transition-duration: var(--motion-duration);
+    transition-timing-function: var(--motion-ease);
+    transition-delay: var(--motion-delay, 0ms);
+    will-change: opacity, transform;
+    pointer-events: none
+}
+
+[data-motion-state="visible"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition-property: opacity, transform, filter;
+    transition-duration: var(--motion-duration);
+    transition-timing-function: var(--motion-ease);
+    transition-delay: var(--motion-delay, 0ms)
+}
+
+[data-motion-state="done"] {
+    opacity: 1;
+    transform: none;
+    filter: none
+}
+
+[data-motion="fade-up"][data-motion-state="pending"] {
+    transform: translate3d(0, var(--motion-distance), 0)
+}
+
+[data-motion="fade-in"][data-motion-state="pending"] {
+    transform: translate3d(0, 8px, 0)
+}
+
+[data-motion="slide-start"][data-motion-state="pending"] {
+    transform: translate3d(calc(var(--motion-direction, 1) * -1 * var(--motion-distance-side)), 0, 0)
+}
+
+[data-motion="slide-end"][data-motion-state="pending"] {
+    transform: translate3d(calc(var(--motion-direction, 1) * var(--motion-distance-side)), 0, 0)
+}
+
+[data-motion="scale-soft"][data-motion-state="pending"] {
+    transform: translate3d(0, 12px, 0) scale(var(--motion-scale));
+    filter: saturate(.92)
+}
+
+.post-card,
+.sidebar-card,
+.services .icon-box,
+.gallery .gallery-item,
+.accordion-item,
+.contact-card,
+.contact .info,
+.contact .php-email-form,
+.landing-block .card,
+.testimonials .testimonial-card,
+.partners .partners-marquee .thumbnail,
+.btn,
+.btn-theme,
+.back-to-top,
+.navbar a,
+.navbar .dropdown ul a,
+.header-dropdown .btn {
+    transition-duration: var(--motion-duration-fast);
+    transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+    transition-timing-function: var(--motion-ease)
+}
+
+.post-card:hover,
+.sidebar-card:hover,
+.services .icon-box:hover,
+.gallery .gallery-item:hover,
+.contact-card:hover,
+.landing-block .card:hover,
+.testimonials .testimonial-card:hover,
+.partners .partners-marquee .thumbnail:hover {
+    transform: translate3d(0, -4px, 0)
+}
+
+.post-card .card-img-top,
+.sidebar-card .card-img-top,
+.gallery .gallery-item img,
+.partners .partners-marquee .thumbnail img {
+    transition: transform 700ms var(--motion-ease), opacity var(--motion-duration-fast) var(--motion-ease)
+}
+
+.post-card:hover .card-img-top,
+.sidebar-card:hover .card-img-top,
+.gallery .gallery-item:hover img,
+.partners .partners-marquee .thumbnail:hover img {
+    transform: scale(1.035)
+}
+
+.accordion-button,
+.form-control,
+.form-select,
+.select2-container .select2-selection,
+.php-email-form button,
+.custom-form button {
+    transition: border-color var(--motion-duration-fast) var(--motion-ease), box-shadow var(--motion-duration-fast) var(--motion-ease), transform var(--motion-duration-fast) var(--motion-ease)
+}
+
+.btn:hover,
+.btn-theme:hover,
+.php-email-form button:hover,
+.custom-form button:hover {
+    transform: translate3d(0, -2px, 0)
+}
+
+.btn:active,
+.btn-theme:active,
+.php-email-form button:active,
+.custom-form button:active {
+    transform: translate3d(0, 0, 0)
+}
+
+.back-to-top.active:hover {
+    transform: translate3d(0, -3px, 0)
+}
+
+.motion-static,
+[data-motion-static],
+[data-motion="none"] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition-delay: 0ms !important
+}
+
+html[dir="rtl"] {
+    --motion-direction: -1
+}
+
+html[dir="ltr"],
+html:not([dir]) {
+    --motion-direction: 1
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+        transition-delay: 0ms !important
+    }
+
+    [data-motion-state] {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        pointer-events: auto !important
+    }
+}

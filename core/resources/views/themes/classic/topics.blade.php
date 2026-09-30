@@ -1,0 +1,244 @@
+@extends(theme_view('layouts.master'))
+
+@section('content')
+    <div>
+        <?php
+        $title_var = "title_".@Helper::currentLanguage()->code;
+        $title_var2 = "title_".config('smartend.default_language');
+        $details_var = "details_".@Helper::currentLanguage()->code;
+        $details_var2 = "details_".config('smartend.default_language');
+        $slug_var = "seo_url_slug_".@Helper::currentLanguage()->code;
+        $slug_var2 = "seo_url_slug_".config('smartend.default_language');
+
+        $webmaster_section_title = "";
+        $category_title = "";
+        $page_title = "";
+        $category_image = "";
+
+        $custom_css_code = @$WebmasterSection->css_code;
+        $custom_js_code = @$WebmasterSection->js_code;
+        $custom_body_code = @$WebmasterSection->body_code;
+
+        if (@$WebmasterSection != "none") {
+            if (@$WebmasterSection->$title_var != "") {
+                $webmaster_section_title = @$WebmasterSection->$title_var;
+            } else {
+                $webmaster_section_title = @$WebmasterSection->$title_var2;
+            }
+            $page_title = $webmaster_section_title;
+            if (@$WebmasterSection->photo != "") {
+                $category_image = route("fileView", ["path" => 'topics/'.@$WebmasterSection->photo]);
+            }
+        }
+        if ($CurrentCategory != "none") {
+            if (!empty($CurrentCategory)) {
+                if (@$CurrentCategory->$title_var != "") {
+                    $category_title = @$CurrentCategory->$title_var;
+                } else {
+                    $category_title = @$CurrentCategory->$title_var2;
+                }
+                $page_title = $category_title;
+                if (@$CurrentCategory->photo != "") {
+                    $category_image = route("fileView", ["path" => 'sections/'.@$CurrentCategory->photo]);
+                }
+
+                $custom_css_code .= @$CurrentCategory->css_code;
+                $custom_js_code .= @$CurrentCategory->js_code;
+                $custom_body_code .= @$CurrentCategory->body_code;
+            }
+        }
+        if (!empty(@$DBTag)) {
+            $page_title = $DBTag->title;
+        }
+        $Category_description = null;
+        if (trim(@$CurrentCategory->$details_var) != "") {
+            $Category_description = @$CurrentCategory->$details_var;
+        }
+        if (@$page_type == "tag" && trim(@$TagDescription)) {
+            $Category_description = @$TagDescription;
+        }
+        ?>
+        @if($category_image !="")
+            @include(theme_view("topic.cover"))
+        @endif
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>{{  (@$search_word !="")?(__('backend.resultsFoundFor')." [ ".@$search_word." ]"):$page_title }}</h1>
+                    <ol>
+                        <li><a href="{{ Helper::homeURL() }}">{{ __("backend.home") }}</a></li>
+                        @if(@$search_word !="")
+                            <li class="active">{!! __("backend.search") !!}</li>
+                        @elseif($webmaster_section_title !="")
+                            <li class="active"><a
+                                    href="{{ Helper::sectionURL(@$WebmasterSection->id) }}">{!! $webmaster_section_title !!}</a>
+                            </li>
+                        @elseif(@$search_word!="")
+                            <li class="active">{{ @$search_word }}</li>
+                        @elseif(!empty(@$DBTag))
+                            <li class="active">{{ @$DBTag->title }}</li>
+                        @else
+                            <li class="active">{{ @$User->name }}</li>
+                        @endif
+                        @if($category_title !="")
+                            <li class="active"><a
+                                    href="{{ Helper::categoryURL(@$CurrentCategory->id) }}">{{ $category_title }}</a>
+                            </li>
+                        @endif
+                    </ol>
+                </div>
+                @if($Category_description)
+                    <div class="text-muted mt-2 category-details">
+                        {!! nl2br($Category_description) !!}
+                    </div>
+                @endif
+            </div>
+        </section>
+        <section id="content">
+            <div class="container">
+                <div class="row">
+                    @if(@count($Categories)>0)
+                        @include(theme_view('layouts.side'))
+                    @endif
+                    <div
+                        class="col-lg-{{(@count($Categories)>0)? "9":"12"}} col-md-{{(@count($Categories)>0)? "7":"12"}} col-sm-12 col-xs-12">
+                        @if($Topics->total() == 0)
+                            <div class="p-5 card text-center no-data">
+                                <i class="fa fa-desktop fa-5x opacity-50"></i>
+                                <h5 class="mt-3 text-muted">{{ __('frontend.noData') }}</h5>
+                            </div>
+                        @else
+                            <div class="row">
+                                @if($Topics->total() > 0)
+
+                                        <?php
+                                        $cols_lg = 4;
+                                        $cols_md = 6;
+                                        if (count($Categories) > 0) {
+                                            $cols_lg = 6;
+                                            $cols_md = 12;
+                                        }
+                                        ?>
+                                    @foreach($Topics as $Topic)
+                                            <?php
+                                            if ($Topic->$title_var != "") {
+                                                $title = $Topic->$title_var;
+                                            } else {
+                                                $title = $Topic->$title_var2;
+                                            }
+                                            if ($Topic->$details_var != "") {
+                                                $details = $details_var;
+                                            } else {
+                                                $details = $details_var2;
+                                            }
+
+                                            $topic_link_url = Helper::topicURL($Topic->id, "", $Topic);
+                                            ?>
+                                        <div
+                                            class="col-lg-{{$cols_lg}} col-md-{{$cols_md}}">
+                                            @include(theme_view("topic.card"),["Topic"=>$Topic])
+                                        </div>
+                                    @endforeach
+                            </div>
+                            <div id="topics_listing">
+
+                            </div>
+                            <div class="row" id="listing_loader" style="display: none">
+                                <div class="col col-sm-12">
+                                    <div class="p-2 text-center">
+                                        <button class="btn btn-light loader-btn">
+                                            <span class="loader"></span> {{ __("frontend.viewMore") }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            @push('after-scripts')
+                                <script>
+                                    $(document).ready(function () {
+                                        let page = 1;
+                                        let finished = 0;
+                                        let in_process = 0;
+
+                                        $(window).off('scroll.infiniteScroll').on('scroll.infiniteScroll', function () {
+                                            const viewportBottom = $(window).scrollTop() + $(window).height();
+
+                                            const footerTop = $('#footer').offset().top;
+
+                                            if (viewportBottom >= footerTop - 400) {
+                                                if (!in_process && !finished) {
+                                                    page++;
+                                                    loadMoreData(page);
+                                                }
+                                            }
+
+                                        });
+
+                                        function loadMoreData(page) {
+                                            $.ajax({
+                                                url: '{{ route("HomeTopicsList") }}/{{ (@$WebmasterSection->id>0)?@$WebmasterSection->id:0 }}/{{ (@$CurrentCategory->id >0)?@$CurrentCategory->id:0 }}/{{ config('smartend.frontend_pagination') }}' + '?page=' + page + "&tag={{ @$DBTag->id }}&lang={{ @Helper::currentLanguage()->code }}&search_word={{ urlencode(@$search_word) }}",
+                                                method: 'GET',
+                                                beforeSend: function () {
+                                                    in_process = 1;
+                                                    $('#listing_loader').show();
+                                                },
+                                                success: function (data) {
+                                                    in_process = 0;
+                                                    $('#listing_loader').hide();
+                                                    if (data.trim() === "") {
+                                                        finished = 1;
+                                                        console.log(1);
+                                                        return;
+                                                    }
+                                                    $('#topics_listing').append(data);
+                                                },
+                                                error: function (xhr) {
+                                                    console.log(xhr.responseText);
+                                                }
+                                            });
+                                        }
+
+                                    });
+                                </script>
+                            @endpush
+                        @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    @include(theme_view('layouts.popup'),['Popup'=>@$Popup])
+@endsection
+@if (@in_array(@$WebmasterSection->type, [3]))
+    @push('before-styles')
+        <link rel="stylesheet"
+              href="{{ theme_asset('vendor/green-audio-player/css/green-audio-player.min.css') }}?v={{ Helper::system_version() }}"/>
+    @endpush
+    @push('after-scripts')
+        <script
+            src="{{ theme_asset('vendor/green-audio-player/js/green-audio-player.min.js') }}?v={{ Helper::system_version() }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                GreenAudioPlayer.init({
+                    selector: '.audio-player',
+                    stopOthersOnPlay: true,
+                    showTooltips: true,
+                });
+            });
+        </script>
+    @endpush
+@endif
+@if($custom_css_code !="" || $custom_js_code !="")
+    @push('after-styles')
+        @if($custom_css_code !="")
+            <style>
+                {!! $custom_css_code !!}
+            </style>
+        @endif
+        {!! $custom_js_code !!}
+    @endpush
+@endif
+@if($custom_body_code !="")
+    @push('before-footer')
+        {!! Blade::render($custom_body_code) !!}
+    @endpush
+@endif
