@@ -27,11 +27,13 @@
 <meta name="author" content="{{ $modernMetaAuthors ?: ((@$page_type === 'author' && filled($PageTitle ?? null)) ? $PageTitle : URL::to('')) }}"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+
+{{-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap"></noscript>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap"></noscript> --}}
+<link href="{{ theme_asset('fonts/fonts-arabic/stylesheet.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('vendor/fontawesome/css/all.min.css') }}?v={{ Helper::system_version() }}"  rel="stylesheet" media/>
 <link href="{{ theme_asset('vendor/fontawesome/css/font-awesome.min.css') }}?v={{ Helper::system_version() }}" rel="stylesheet" media/>
 <link href="{{ theme_asset('vendor/animate.css/animate.min.css') }}?v={{ Helper::system_version() }}" rel="stylesheet">
@@ -47,11 +49,26 @@
 <link href="{{ theme_asset('css/style.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('css/motion.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('css/authors.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/mega-menu.css') }}?v={{ @filemtime(base_path('../assets/modern/css/mega-menu.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/scholars-header-hero.css') }}?v={{ @filemtime(base_path('../assets/modern/css/scholars-header-hero.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-home.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-home.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 
 
 @if( @Helper::currentLanguage()->direction=="rtl")
 <link href="{{ theme_asset('css/rtl.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
 @endif
+<link href="{{ theme_asset('css/yemen-news.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-news.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-scholars-directory.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-scholars-directory.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-opinions.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-opinions.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-infographics.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-infographics.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-video-gallery.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-video-gallery.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-books.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-books.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-magazine.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-magazine.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-featured-news-slider.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-featured-news-slider.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-footer.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-footer.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/scholars-compact-header.css') }}?v={{ @filemtime(base_path('../assets/modern/css/scholars-compact-header.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-author-articles.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-author-articles.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-categories.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-categories.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 
 <!-- Favicon and Touch Icons -->
 @if(Helper::GeneralSiteSettings("style_fav") !="")

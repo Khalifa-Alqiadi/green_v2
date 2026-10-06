@@ -121,6 +121,9 @@ class TopicBlockController extends Controller
                     $content["category_ids"] = ($request->category_ids) ? @implode(",", $request->category_ids) : null;
                     $content["records_count"] = $request->records_count;
                     $content["records_order"] = $request->records_order;
+                    $content["slider_columns"] = min(5, max(1, (int) $request->input("slider_columns", 3)));
+                    $content["slider_autoplay"] = $request->boolean("slider_autoplay") ? 1 : 0;
+                    $content["slider_speed"] = min(12000, max(1500, (int) $request->input("slider_speed", 5000)));
                     $content["view_style"] = $request->view_style;
                 } elseif ($type == 2) {
                     // banners

@@ -6,12 +6,13 @@
     margin-right: 0 !important
 }
 
-* {
-    font-family: Tajawal, sans-serif
+*,
+body {
+    font-family: "IBM Plex Sans Arabic", sans-serif 
 }
 
 #hero h2, .btn, .categories-list .nav-link span, .navbar .nav-link, h1, h2, h3, h4, h5, h6,.modern-footer-contact-label,.modern-works-title {
-    font-family: Alexandria, sans-serif
+    font-family: "IBM Plex Sans Arabic", sans-serif
 }
 
 .header-dropdown .btn {

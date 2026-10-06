@@ -246,6 +246,25 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="source_status1"
+                                   class="col-sm-2 form-control-label">{!!  __('backend.sourceHint') !!}</label>
+                            <div class="col-sm-10">
+                                <div class="radio">
+                                    <label class="md-check">
+                                        <input type="radio" name="source_status" value="1" class="has-value" id="source_status1">
+                                        <i class="primary"></i>
+                                        {{ __('backend.yes') }}
+                                    </label>
+                                    &nbsp; &nbsp;
+                                    <label class="md-check">
+                                        <input type="radio" name="source_status" value="0" class="has-value" checked id="source_status2">
+                                        <i class="danger"></i>
+                                        {{ __('backend.no') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="longtext_status1" class="col-sm-2 form-control-label">{!!  __('backend.longTextField') !!}</label>
                             <div class="col-sm-10">
                                 <div class="radio">

@@ -175,7 +175,7 @@ class ModuleCreationService
             foreach (['title_status', 'case_status', 'seo_status', 'no_status', 'photo_status', 'visits_status', 'featured_status', 'index_status', 'tags_status', 'code_status'] as $key) {
                 $section->{$key} = 1;
             }
-            foreach (['comments_status', 'date_status', 'expire_date_status', 'longtext_status', 'editor_status', 'authors_status', 'attach_file_status', 'extra_attach_file_status', 'multi_images_status', 'maps_status', 'order_status', 'section_icon_status', 'icon_status', 'related_status'] as $key) {
+            foreach (['comments_status', 'date_status', 'expire_date_status', 'longtext_status', 'editor_status', 'authors_status', 'source_status', 'attach_file_status', 'extra_attach_file_status', 'multi_images_status', 'maps_status', 'order_status', 'section_icon_status', 'icon_status', 'related_status'] as $key) {
                 $section->{$key} = 0;
             }
 

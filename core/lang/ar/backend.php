@@ -917,6 +917,11 @@ return array(
     'blockModuleOrder2' => 'الأحدث أولاً',
     'blockModuleOrder3' => 'الأقدم أولاً',
     'blockModuleOrder4' => 'ترتيب عشوائي',
+    'sliderSettings' => 'إعدادات سلايدر الأعمدة',
+    'sliderColumns' => 'عدد الأعمدة الظاهرة',
+    'sliderAutoplay' => 'تشغيل السلايدر تلقائيًا',
+    'sliderSpeed' => 'مدة الانتقال التلقائي',
+    'sliderSpeedHint' => 'بالمللي ثانية',
     'showHeader' => 'عرض الهيدر الإفتراضي',
     'showFooter' => 'عرض الفوتر الإفتراضي',
     'homepageSettings' => 'إعدادات الصفحة الرئيسية',
@@ -1067,5 +1072,7 @@ return array(
     'removeAuthorPhoto' => 'حذف الصورة الحالية',
     'authorPhotoHint' => 'صورة بصيغة مدعومة وبحجم لا يتجاوز 5 ميجابايت.',
     'authorsSelectHint' => 'يمكن اختيار كاتب واحد أو أكثر لهذه المادة.',
-    'selectAtLeastOneAuthor' => 'يرجى اختيار كاتب واحد على الأقل.'
+    'selectAtLeastOneAuthor' => 'يرجى اختيار كاتب واحد على الأقل.',
+    'source' => 'المصدر',
+    'sourceHint' => 'يتضمن مصدر'
 ) ;

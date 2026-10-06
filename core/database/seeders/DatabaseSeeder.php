@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PopupsSeeder::class);
         $this->call(CategoriesSeeder::class);
         $this->call(TopicsSeeder::class);
+        $this->call(YemenScholarsDemoSeeder::class);
         $this->call(WebmailGroupsSeeder::class);
     }
 }

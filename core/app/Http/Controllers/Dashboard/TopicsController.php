@@ -803,6 +803,9 @@ class TopicsController extends Controller
 
                 }
             }
+            if($WebmasterSection->source_status){
+                $Topic->source = $request->source;
+            }
             $Topic->date = ($request->date != "") ? Helper::dateForDB($request->date) : date("Y-m-d");
             if (@$request->expire_date != "") {
                 $Topic->expire_date = Helper::dateForDB($request->expire_date);
@@ -1144,6 +1147,9 @@ class TopicsController extends Controller
                         $Topic->{"details_".$ActiveLanguage->code} = $request->{"details_".$ActiveLanguage->code};
                         $Topic->{"photo_alt_".$ActiveLanguage->code} = strip_tags((string) $request->{"photo_alt_".$ActiveLanguage->code});
                     }
+                }
+                if($WebmasterSection->source_status){
+                    $Topic->source = $request->source;
                 }
                 if ($request->date != "") {
                     $Topic->date = Helper::dateForDB($request->date);

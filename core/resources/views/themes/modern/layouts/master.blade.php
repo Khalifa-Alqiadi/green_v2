@@ -19,9 +19,6 @@
 <body class="dir-{{ @Helper::currentLanguage()->direction }} lang-{{ @Helper::currentLanguage()->code }} {{ (!Helper::GeneralSiteSettings("style_change") && Helper::GeneralSiteSettings("style_type"))?"dark":"" }}">
 
 @if(!@$HideHeader)
-<!-- ======= Top Bar ======= -->
-@include(theme_view('layouts.topbar'))
-
 <!-- ======= Header ======= -->
 @include(theme_view('layouts.header'))
 @endif

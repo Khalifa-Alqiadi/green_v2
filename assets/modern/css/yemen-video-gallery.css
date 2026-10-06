@@ -1,0 +1,74 @@
+/* Visual stories: a cinematic lead with a quiet, browsable film strip. */
+.yh-visuals:not(.yh-topic-block--infographics) {
+    --video-ink: var(--brand-secondary-dark);
+    --video-muted: color-mix(in srgb, var(--video-ink) 62%, white);
+    --video-rule: color-mix(in srgb, var(--brand-secondary) 16%, white);
+    position: relative;
+    isolation: isolate;
+    padding: clamp(64px, 7vw, 102px) 0;
+    background: color-mix(in srgb, var(--brand-surface) 30%, white);
+}
+.yh-visuals:not(.yh-topic-block--infographics)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-block-start: -145px;
+    inset-inline-end: -135px;
+    width: 320px;
+    height: 320px;
+    border: 1px solid var(--video-rule);
+    border-radius: 50% 50% 3px 3px;
+    transform: rotate(45deg);
+    opacity: .7;
+    pointer-events: none;
+}
+.yh-visuals:not(.yh-topic-block--infographics) .yh-section-head { margin-bottom: 28px; padding-bottom: 25px; border-color: var(--video-rule); }
+.yh-visuals:not(.yh-topic-block--infographics) .yh-section-head h2 { color: var(--video-ink); font-size: clamp(2.15rem, 3.6vw, 3.35rem); }
+.yh-visuals:not(.yh-topic-block--infographics) .yh-section-head p { color: var(--video-muted); font-size: .94rem; }
+.yh-visuals:not(.yh-topic-block--infographics) .yh-section-head__more { min-height: 44px; padding-block: 7px; border-bottom: 2px solid var(--brand-primary); color: var(--video-ink) !important; }
+.yh-visuals:not(.yh-topic-block--infographics) .yh-section-head__more i { color: var(--brand-primary-dark); }
+.yh-video-wall { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.yh-video-wall__featured { position: relative; display: block; min-height: 0; height: clamp(390px, 39vw, 560px); overflow: hidden; color: white !important; background: var(--brand-secondary-dark); }
+.yh-video-wall__featured::after { z-index: 1; inset: 35% 0 0; background: linear-gradient(transparent, color-mix(in srgb, var(--brand-secondary-dark) 83%, transparent)); }
+.yh-video-wall__featured > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.yh-video-wall__placeholder { display: grid; width: 100%; height: 100%; place-items: center; color: color-mix(in srgb, white 50%, var(--brand-line)); background: color-mix(in srgb, var(--brand-secondary) 82%, var(--brand-surface)); font-size: 3rem; }
+.yh-video-wall__featured > div { z-index: 3; inset: auto clamp(23px, 4vw, 52px) clamp(24px, 3vw, 39px); max-width: min(700px, 80%); }
+.yh-video-wall__featured small { display: inline-flex; align-items: center; gap: 9px; color: color-mix(in srgb, white 78%, var(--brand-line)); font-size: .8rem; font-weight: 800; }
+.yh-video-wall__featured small::before { content: ""; width: 20px; height: 2px; background: var(--brand-primary); }
+.yh-video-wall__featured h3 { max-width: 680px; margin-top: 10px; color: white; font-size: clamp(1.7rem, 3vw, 2.85rem); line-height: 1.45; }
+.yh-video-wall__play { z-index: 3; inset-block-start: 50%; inset-inline-end: auto; left: 50%; width: 76px; height: 76px; border: 1px solid color-mix(in srgb, white 68%, transparent); border-radius: 50%; color: white; background: color-mix(in srgb, var(--brand-secondary-dark) 76%, transparent); transform: translate(-50%, -50%); transition: background .2s ease, scale .2s ease; }
+.yh-video-wall__featured:hover .yh-video-wall__play { background: var(--brand-secondary); scale: 1.08; }
+.yh-video-wall__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; gap: 16px; }
+.yh-video-wall__list > a { display: grid; grid-template-columns: 128px minmax(0, 1fr); align-items: stretch; min-height: 130px; gap: 0; overflow: hidden; color: var(--video-ink) !important; border: 1px solid var(--video-rule); background: white; transition: border-color .2s ease, transform .2s ease; }
+.yh-video-wall__list > a:hover { border-color: color-mix(in srgb, var(--brand-primary) 46%, white); transform: translateY(-3px); }
+.yh-video-wall__list > a:focus-visible, .yh-video-wall__featured:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 3px; }
+.yh-video-wall__list figure { height: 100%; min-height: 128px; background: var(--brand-secondary-dark); }
+.yh-video-wall__list figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.yh-video-wall__list figure > span { z-index: 2; width: 36px; height: 36px; border: 1px solid color-mix(in srgb, white 65%, transparent); color: white; background: color-mix(in srgb, var(--brand-secondary-dark) 75%, transparent); }
+.yh-video-wall__list figure .yh-video-wall__placeholder { font-size: 1.8rem; }
+.yh-video-wall__item-copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding: 13px 16px; }
+.yh-video-wall__item-copy small { color: var(--brand-primary-dark); font-size: .66rem; font-weight: 800; }
+.yh-video-wall__list strong { display: -webkit-box; padding: 0; overflow: hidden; color: var(--video-ink); font-size: .9rem; line-height: 1.55; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.yh-video-wall__item-copy > i { color: var(--brand-primary-dark); font-size: .7rem; }
+@media (max-width: 1199px) {
+    .yh-video-wall__list > a { grid-template-columns: 105px minmax(0, 1fr); }
+    .yh-video-wall__item-copy { padding-inline: 12px; }
+}
+@media (max-width: 991px) {
+    .yh-video-wall__featured { height: 470px; }
+    .yh-video-wall__list { grid-template-columns: 1fr; gap: 10px; }
+    .yh-video-wall__list > a { grid-template-columns: 150px minmax(0, 1fr); }
+}
+@media (max-width: 575px) {
+    .yh-visuals:not(.yh-topic-block--infographics) { padding: 56px 0; }
+    .yh-video-wall__featured { height: 390px; }
+    .yh-video-wall__featured > div { max-width: calc(100% - 40px); inset-inline: 20px; inset-block-end: 22px; }
+    .yh-video-wall__featured h3 { font-size: 1.55rem; }
+    .yh-video-wall__play { width: 60px; height: 60px; }
+    .yh-video-wall__list > a { grid-template-columns: 115px minmax(0, 1fr); min-height: 118px; }
+    .yh-video-wall__list figure { min-height: 118px; }
+    .yh-video-wall__item-copy { padding: 9px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .yh-video-wall__play, .yh-video-wall__list > a { transition: none; }
+}

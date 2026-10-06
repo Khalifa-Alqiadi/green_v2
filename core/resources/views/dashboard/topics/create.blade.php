@@ -271,6 +271,17 @@ $PhoneFieldsIds = [];
                                 @endif
                             @endforeach
                         @endif
+                        @if($WebmasterSection->source_status)
+                            <div class="form-group row">
+                                <label for="source" class="col-sm-2 form-control-label">{!!  __('backend.source') !!}
+                                </label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <input type="text" autocomplete="off" name="source" id="source" value="" required maxlength="191" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
 
                         @if($WebmasterSection->longtext_status)
 

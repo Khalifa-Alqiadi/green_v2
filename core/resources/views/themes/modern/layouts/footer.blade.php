@@ -9,11 +9,11 @@ $contact_address = Helper::GeneralSiteSettings("contact_t1_" . @Helper::currentL
 $contact_phone = Helper::GeneralSiteSettings("contact_t3");
 $contact_email = Helper::GeneralSiteSettings("contact_t6");
 ?>
-<footer id="footer" class="modern-footer">
+<footer id="footer" class="modern-footer modern-footer--light pt-5">
     @if(Helper::GeneralSiteSettings("style_footer")==1)
         <div class="footer-top">
             <div class="container" >
-                @if($contact_address !="" || $contact_phone !="" || $contact_email !="")
+                {{-- @if($contact_address !="" || $contact_phone !="" || $contact_email !="")
                     <div class="modern-footer-contact-bar">
                         @if($contact_address !="")
                             <div class="modern-footer-contact-item">
@@ -43,7 +43,7 @@ $contact_email = Helper::GeneralSiteSettings("contact_t6");
                             </div>
                         @endif
                     </div>
-                @endif
+                @endif --}}
 
                 <div class="row g-4 modern-footer-main">
                     <div class="col-lg-4 col-md-12">
@@ -56,9 +56,9 @@ $contact_email = Helper::GeneralSiteSettings("contact_t6");
                                     <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}" src="{{ route("fileView",["path" =>'settings/nologo.png' ]) }}" class="img-fluid" width="172" height="50">
                                 @endif
                             </a>
-                            @if(Helper::GeneralSiteSettings($site_desc_var) !="")
+                            {{-- @if(Helper::GeneralSiteSettings($site_desc_var) !="")
                                 <p class="modern-footer-description">{{ Helper::GeneralSiteSettings($site_desc_var) }}</p>
-                            @endif
+                            @endif --}}
                             @include(theme_view("layouts.social"),["tt_position"=>"top"])
                         </div>
                     </div>
@@ -132,13 +132,10 @@ $contact_email = Helper::GeneralSiteSettings("contact_t6");
     @endif
     <div class="footer-bottom">
         <div class="container py-4">
-            <div class="text-center">
+            <div class="modern-footer-bottom-inner text-center d-block">
                 <div class="copyright">
                     &copy; <?php echo date("Y") ?> {{ __('frontend.AllRightsReserved') }}
-                    . <a href="#">{{Helper::GeneralSiteSettings($site_title_var)}}</a>
-                </div>
-                <div class="credits">
-                    {{ __('frontend.poweredByName') }} <a href="https://yemenhosting.com">{{__('frontend.yemenHosting')}}</a>
+                    . {{Helper::GeneralSiteSettings($site_title_var)}}
                 </div>
             </div>
         </div>

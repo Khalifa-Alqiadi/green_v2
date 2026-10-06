@@ -186,6 +186,7 @@ class WebmasterSectionsController extends Controller
                 $WebmasterSection->index_status = 1;
                 $WebmasterSection->tags_status = 1;
                 $WebmasterSection->authors_status = 0;
+                $WebmasterSection->source_status = 0;
                 $WebmasterSection->code_status = 1;
 
                 $WebmasterSection->comments_status = 0;
@@ -210,6 +211,7 @@ class WebmasterSectionsController extends Controller
                 $WebmasterSection->index_status = $request->index_status;
                 $WebmasterSection->tags_status = $request->tags_status;
                 $WebmasterSection->authors_status = $request->authors_status;
+                $WebmasterSection->source_status = $request->source_status;
                 $WebmasterSection->visits_status = $request->visits_status;
                 $WebmasterSection->date_status = $request->date_status;
                 $WebmasterSection->expire_date_status = $request->expire_date_status;

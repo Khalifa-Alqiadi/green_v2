@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 132" role="img" aria-label="Author articles preview">
+<rect width="192" height="132" rx="10" fill="#f7f4ed"/>
+<path d="M12 14h91M155 14h25" stroke="#173f33" stroke-width="5" stroke-linecap="round"/>
+<rect x="12" y="31" width="168" height="47" rx="3" fill="#e8e5d9"/>
+<path d="M12 31h48v47H12z" fill="#173f33"/>
+<circle cx="36" cy="48" r="9" fill="#bfa56c"/>
+<path d="M19 73c2-11 9-17 17-17s15 6 17 17" fill="#bfa56c"/>
+<path d="M70 42h97M70 52h83M70 62h70" stroke="#355a48" stroke-width="4" stroke-linecap="round"/>
+<rect x="12" y="84" width="80" height="36" rx="2" fill="#fff" stroke="#d8dcd4"/>
+<rect x="101" y="84" width="79" height="36" rx="2" fill="#fff" stroke="#d8dcd4"/>
+<path d="M12 84h29v36H12zM101 84h29v36h-29z" fill="#315c49"/>
+<circle cx="26" cy="96" r="5" fill="#c9b47f"/><path d="M16 115c1-7 5-11 10-11s9 4 10 11" fill="#c9b47f"/>
+<circle cx="115" cy="96" r="5" fill="#c9b47f"/><path d="M105 115c1-7 5-11 10-11s9 4 10 11" fill="#c9b47f"/>
+<path d="M47 96h37M47 104h29M136 96h37M136 104h27" stroke="#315c49" stroke-width="3" stroke-linecap="round"/>
+</svg>

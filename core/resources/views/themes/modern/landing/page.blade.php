@@ -33,7 +33,18 @@
                         } catch (Exception $e) {
                             $TopicBlockContents = [];
                         }
+
+                        // Stable hooks let every homepage block keep its own visual identity
+                        // while preserving any custom classes configured in the dashboard.
+                        $blockViewStyle = strtolower(str_replace(' ', '', @$TopicBlockContents->view_style));
+                        $blockViewClass = $blockViewStyle !== '' ? ' topic-block--view-'.$blockViewStyle : '';
+                        $blockModuleClass = ((int) @$TopicBlockContents->module_id > 0)
+                            ? ' topic-block--module-'.(int) @$TopicBlockContents->module_id
+                            : '';
                         ?>
+                    <div class="topic-block topic-block--{{ (int) $TopicBlock->id }} topic-block--type-{{ (int) $TopicBlock->type }}{{ $blockViewClass }}{{ $blockModuleClass }}"
+                         data-topic-block="{{ (int) $TopicBlock->id }}"
+                         @if($blockViewStyle !== '') data-topic-view="{{ $blockViewStyle }}" @endif>
                     @if($TopicBlock->type == 4)
                         {{--Form--}}
                         @if(@$TopicBlockContents->view_style !="")
@@ -47,7 +58,7 @@
                     @if($TopicBlock->type == 3)
                         {{--Dynamic--}}
                         @if(@$TopicBlockContents->view_style !="")
-                            @include(theme_view('landing.').strtolower(str_replace(" ","",@$TopicBlockContents->view_style)))
+                            @include(theme_view('landing.').($blockViewStyle === 'yhinfographics' ? 'yhvisuals' : $blockViewStyle))
                         @endif
                     @elseif($TopicBlock->type == 2)
                         {{--Banners--}}
@@ -61,6 +72,7 @@
                         {{--Static Content--}}
                         @include(theme_view('landing.static'))
                     @endif
+                    </div>
                 @endif
             @endforeach
         @endif
@@ -83,3 +95,24 @@
         {!! Blade::render($custom_body_code) !!}
     @endpush
 @endif
+@push('after-scripts')
+    <script>
+        (function () {
+            var targets = document.querySelectorAll('.landing-page .meu-reveal, .landing-page .meu-stagger');
+            if (!targets.length) return;
+            if (!('IntersectionObserver' in window)) {
+                targets.forEach(function (element) { element.classList.add('meu-in'); });
+                return;
+            }
+            var observer = new IntersectionObserver(function (entries, instance) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('meu-in');
+                        instance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+            targets.forEach(function (element) { observer.observe(element); });
+        })();
+    </script>
+@endpush

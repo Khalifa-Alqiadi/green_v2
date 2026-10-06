@@ -1915,8 +1915,8 @@ html[dir="rtl"] .gallery .gallery-deck-item:nth-child(4n + 3) {
 
 .modern-footer-logo img {
     max-width: 230px;
-    max-height: 58px;
-    /* width: auto; */
+    /* max-height: 58px; */
+    width: auto;
     height: auto
 }
 

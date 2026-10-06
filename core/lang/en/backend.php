@@ -916,6 +916,11 @@ return array(
     'blockModuleOrder2' => 'Latest first',
     'blockModuleOrder3' => 'Oldest first',
     'blockModuleOrder4' => 'Random order',
+    'sliderSettings' => 'Columns slider settings',
+    'sliderColumns' => 'Visible columns',
+    'sliderAutoplay' => 'Enable autoplay',
+    'sliderSpeed' => 'Autoplay delay',
+    'sliderSpeedHint' => 'In milliseconds',
     'showHeader' => 'Show default header',
     'showFooter' => 'Show default footer',
     'homepageSettings' => 'Homepage settings',
@@ -1067,4 +1072,6 @@ return array(
     'authorPhotoHint' => 'Upload a supported image up to 5 MB.',
     'authorsSelectHint' => 'You can select one or more authors for this topic.',
     'selectAtLeastOneAuthor' => 'Please select at least one author.',
+    'source' => 'Source',
+    'sourceHint' => 'The source includes'
 ) ;

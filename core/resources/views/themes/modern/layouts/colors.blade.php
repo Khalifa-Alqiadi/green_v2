@@ -12,6 +12,15 @@ $hero_shadow_color = Helper::colorHexToDarken($style_color2, 3.2);
         --modern-author-accent: {{ $style_color1 }};
         --modern-author-ink: {{ $style_color2 }};
         --modern-author-surface: {{ $style_color3 }};
+        --brand-primary: {{ $style_color1 }};
+        --brand-secondary: {{ $style_color2 }};
+        --brand-surface: {{ $style_color3 }};
+        --brand-line: {{ $style_color4 }};
+        --brand-primary-dark: {{ Helper::colorHexToDarken($style_color1, 1.25) }};
+        --brand-secondary-dark: {{ Helper::colorHexToDarken($style_color2, 1.45) }};
+        --scholars-white: #fff;
+        --scholars-muted: color-mix(in srgb, {{ $style_color2 }} 56%, #fff);
+        --scholars-border: color-mix(in srgb, {{ $style_color4 }} 62%, transparent);
     }
 
     .topic-read-also {
@@ -707,5 +716,11 @@ $hero_shadow_color = Helper::colorHexToDarken($style_color2, 3.2);
 
     .breadcrumbs, pre {
         background-color: {{ Helper::GeneralSiteSettings("style_color3") }}
+    }
+    #footer.modern-footer--light .social-links a{
+        color: {{ Helper::GeneralSiteSettings("style_color1") }} !important;
+    }
+    #footer.modern-footer--light .social-links a:hover{
+        color: {{ Helper::GeneralSiteSettings("style_color3") }} !important;
     }
 </style>

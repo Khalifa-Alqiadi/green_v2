@@ -1,0 +1,73 @@
+/* A newsstand-like issue archive with uncropped magazine covers. */
+.yh-magazine {
+    --magazine-ink: var(--brand-secondary-dark);
+    --magazine-muted: color-mix(in srgb, var(--magazine-ink) 59%, white);
+    --magazine-rule: color-mix(in srgb, var(--brand-secondary) 16%, white);
+    position: relative;
+    isolation: isolate;
+    padding: clamp(64px, 7vw, 102px) 0;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--brand-surface) 42%, white);
+}
+.yh-magazine::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-block-start: -155px;
+    inset-inline-end: -130px;
+    width: 330px;
+    height: 330px;
+    border: 1px solid var(--magazine-rule);
+    border-radius: 50% 50% 4px 4px;
+    transform: rotate(45deg);
+    opacity: .7;
+    pointer-events: none;
+}
+.yh-magazine .yh-section-head { margin-bottom: 28px; padding-bottom: 23px; border-color: var(--magazine-rule); }
+.yh-magazine .yh-section-head h2 { color: var(--magazine-ink); font-size: clamp(2.2rem, 3.6vw, 3.35rem); }
+.yh-magazine .yh-section-head p { color: var(--magazine-muted); font-size: .94rem; }
+.yh-magazine .yh-section-head__more { min-height: 44px; padding-block: 7px; border-bottom: 2px solid var(--brand-primary); color: var(--magazine-ink) !important; }
+.yh-magazine .yh-section-head__more i { color: var(--brand-primary-dark); }
+.yh-magazine__layout { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.yh-magazine__featured { display: grid; grid-template-columns: minmax(240px, 31%) minmax(0, 1fr); min-height: 360px; overflow: hidden; color: var(--magazine-ink) !important; border: 1px solid var(--magazine-rule); background: white; transition: border-color .2s ease; }
+.yh-magazine__featured:hover { border-color: color-mix(in srgb, var(--brand-primary) 45%, white); }
+.yh-magazine__featured figure { display: grid; min-height: 360px; place-items: center; padding: 21px; border-inline-end: 1px solid var(--magazine-rule); background: color-mix(in srgb, var(--brand-surface) 39%, white); }
+.yh-magazine__featured figure img { display: block; width: 100%; height: 100%; max-height: 320px; object-fit: contain; }
+.yh-magazine__featured figure > i { display: grid; width: 160px; height: 230px; place-items: center; color: var(--brand-primary-dark); border: 1px solid var(--magazine-rule); background: white; font-size: 2rem; }
+.yh-magazine__featured > div { align-items: flex-start; justify-content: center; padding: clamp(26px, 4vw, 52px); }
+.yh-magazine__featured > div > span { display: inline-flex; align-items: center; gap: 9px; color: var(--brand-primary-dark); font-size: .77rem; }
+.yh-magazine__featured > div > span::before { content: ""; width: 18px; height: 2px; background: var(--brand-primary); }
+.yh-magazine__featured h3 { max-width: 680px; margin: 13px 0 12px; color: var(--magazine-ink); font-size: clamp(1.75rem, 2.6vw, 2.5rem); line-height: 1.45; }
+.yh-magazine__featured p { display: -webkit-box; max-width: 650px; margin: 0; overflow: hidden; color: var(--magazine-muted); font-size: .9rem; line-height: 1.85; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.yh-magazine__featured b { display: inline-flex; min-height: 44px; align-items: center; gap: 20px; margin-top: 22px; padding: 9px 0; color: var(--magazine-ink); border-top: 0; border-bottom: 2px solid var(--brand-primary); font-size: .82rem; }
+.yh-magazine__featured b i { color: var(--brand-primary-dark); }
+.yh-magazine__issues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.yh-magazine__issues > a { display: grid; grid-template-columns: 110px minmax(0, 1fr); grid-template-rows: auto 1fr auto; min-width: 0; min-height: 160px; gap: 0 15px; overflow: hidden; color: var(--magazine-ink) !important; border: 1px solid var(--magazine-rule); background: white; transition: border-color .2s ease, transform .2s ease; }
+.yh-magazine__issues > a:hover { border-color: color-mix(in srgb, var(--brand-primary) 45%, white); transform: translateY(-3px); }
+.yh-magazine__featured:focus-visible, .yh-magazine__issues > a:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 3px; }
+.yh-magazine__issues figure { grid-row: 1 / 4; width: 110px; height: 100%; min-height: 160px; aspect-ratio: auto; display: grid; place-items: center; padding: 9px; border-inline-end: 1px solid var(--magazine-rule); background: color-mix(in srgb, var(--brand-surface) 39%, white); }
+.yh-magazine__issues figure img { display: block; width: 100%; height: 100%; max-height: 150px; object-fit: contain; }
+.yh-magazine__issues figure > i { display: grid; width: 75px; height: 120px; place-items: center; color: var(--brand-primary-dark); border: 1px solid var(--magazine-rule); background: white; font-size: 1.2rem; }
+.yh-magazine__issues > a > span { grid-column: 2; margin: 15px 0 0; color: var(--brand-primary-dark); font-size: .67rem; font-weight: 800; }
+.yh-magazine__issues h3 { display: -webkit-box; grid-column: 2; align-self: start; margin: 6px 13px 8px 0; overflow: hidden; color: var(--magazine-ink); font-size: .94rem; line-height: 1.55; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.yh-magazine__issues b { display: flex; grid-column: 2; align-items: center; justify-content: space-between; gap: 9px; margin-inline-end: 14px; padding: 8px 0 11px; color: var(--magazine-ink); border-top: 1px solid var(--magazine-rule); font-size: .7rem; }
+.yh-magazine__issues b i { color: var(--brand-primary-dark); }
+@media (max-width: 1199px) {
+    .yh-magazine__issues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+    .yh-magazine__featured { grid-template-columns: 1fr; }
+    .yh-magazine__featured figure { min-height: 310px; border-inline-end: 0; border-bottom: 1px solid var(--magazine-rule); }
+    .yh-magazine__featured figure img { max-height: 280px; }
+    .yh-magazine__featured > div { padding: 25px; }
+    .yh-magazine__issues { grid-template-columns: 1fr; }
+}
+@media (max-width: 575px) {
+    .yh-magazine { padding: 56px 0; }
+    .yh-magazine .yh-section-head h2 { font-size: 2.3rem; }
+    .yh-magazine__issues > a { grid-template-columns: 105px minmax(0, 1fr); }
+    .yh-magazine__issues figure { width: 105px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .yh-magazine__featured, .yh-magazine__issues > a, .yh-magazine img { transition: none; }
+}
