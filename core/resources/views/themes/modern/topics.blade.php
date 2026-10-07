@@ -51,6 +51,7 @@
             $page_title = $DBTag->title;
         }
         $Category_description = null;
+        $isNewsSection = (int) (@$WebmasterSection->id) === 3;
         if (trim(@$CurrentCategory->$details_var) != "") {
             $Category_description = @$CurrentCategory->$details_var;
         }
@@ -98,7 +99,7 @@
             <div class="container">
                 <div class="row">
                     @if(@count($Categories)>0)
-                        @include(theme_view('layouts.side'))
+                        @include(theme_view('layouts.side'), ['hideMostViewed' => $isNewsSection])
                     @endif
                     <div
                         class="col-lg-{{(@count($Categories)>0)? "9":"12"}} col-md-{{(@count($Categories)>0)? "7":"12"}} col-sm-12 col-xs-12">
@@ -108,7 +109,7 @@
                                 <h5 class="mt-3 text-muted">{{ __('frontend.noData') }}</h5>
                             </div>
                         @else
-                            <div class="row">
+                            <div class="{{ $isNewsSection ? 'yh-news-list' : 'row' }}">
                                 @if($Topics->total() > 0)
 
                                         <?php
@@ -134,10 +135,13 @@
 
                                             $topic_link_url = Helper::topicURL($Topic->id, "", $Topic);
                                             ?>
-                                        <div
-                                            class="col-lg-{{$cols_lg}} col-md-{{$cols_md}}">
-                                            @include(theme_view("topic.card"),["Topic"=>$Topic])
-                                        </div>
+                                        @if($isNewsSection)
+                                            @include(theme_view('topic.news-list-card'), ['Topic' => $Topic])
+                                        @else
+                                            <div class="col-lg-{{$cols_lg}} col-md-{{$cols_md}}">
+                                                @include(theme_view("topic.card"),["Topic"=>$Topic])
+                                            </div>
+                                        @endif
                                     @endforeach
                             </div>
                             <div id="topics_listing">
@@ -208,6 +212,30 @@
     </div>
     @include(theme_view('layouts.popup'),['Popup'=>@$Popup])
 @endsection
+@if((int) (@$WebmasterSection->id) === 3)
+    @push('after-styles')
+        <style>
+            .yh-news-list{display:flex;flex-direction:column;gap:18px}
+            .yh-news-list__item{display:grid;grid-template-columns: minmax(180px, 342px) minmax(0, 1fr);overflow:hidden;background:#fff;border:1px solid color-mix(in srgb,var(--brand-secondary) 14%,transparent);border-radius:14px;transition:border-color .2s,transform .2s,box-shadow .2s}
+            .yh-news-list__item:hover{border-color:color-mix(in srgb,var(--brand-primary) 45%,transparent);transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.06)}
+            .yh-news-list__image{display:block;min-height:170px;overflow:hidden;background:color-mix(in srgb,var(--brand-secondary) 8%,#fff)}
+            .yh-news-list__image img,.yh-news-list__placeholder{display:block;width:100%;height:100%;min-height:170px;object-fit:cover}
+            .yh-news-list__image img{transition:transform .35s}
+            .yh-news-list__item:hover .yh-news-list__image img{transform:scale(1.04)}
+            .yh-news-list__placeholder{display:grid;place-items:center;color:var(--brand-secondary);font-size:2.5rem}
+            .yh-news-list__body{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px 24px;min-width:0}
+            .yh-news-list__date{color:var(--brand-primary);font-size:.8rem;font-weight:700;margin-bottom:8px}
+            .yh-news-list__body h2{font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.45;margin:0 0 8px;font-weight:700}
+            .yh-news-list__body h2 a{color:var(--brand-secondary);text-decoration:none}
+            .yh-news-list__body h2 a:hover{color:var(--brand-primary)}
+            .yh-news-list__body p{color:#62736c;line-height:1.7;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+            .yh-news-list__read{display:inline-flex;align-items:center;gap:9px;color:var(--brand-primary);font-size:.9rem;font-weight:700;text-decoration:none}
+            .yh-news-list__read:hover{gap:14px;color:var(--brand-secondary)}
+            #topics_listing>.yh-news-list{margin-top:18px}
+            @media(max-width:575px){.yh-news-list__item{grid-template-columns:1fr}.yh-news-list__image,.yh-news-list__image img,.yh-news-list__placeholder{height:190px;min-height:190px}.yh-news-list__body{padding:18px}}
+        </style>
+    @endpush
+@endif
 @if (@in_array(@$WebmasterSection->type, [3]))
     @push('before-styles')
         <link rel="stylesheet"

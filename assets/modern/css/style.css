@@ -3529,3 +3529,9 @@ pre {
 .contact-page .landing-block{
     padding-top: 0 !important;
 }
+
+.glightbox-clean .gslide-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+    

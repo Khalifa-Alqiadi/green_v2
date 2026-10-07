@@ -134,7 +134,7 @@
             </div>
 
         @endif
-        @if(@count(@$MostViewedTopics) >0)
+        @if(!($hideMostViewed ?? false) && @count(@$MostViewedTopics) >0)
             <div class="widget mb-4 d-none d-md-block">
                 <h5 class="widget-title">{{ __('frontend.mostViewed') }}</h5>
 

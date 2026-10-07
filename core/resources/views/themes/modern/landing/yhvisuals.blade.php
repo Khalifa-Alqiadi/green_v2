@@ -11,24 +11,25 @@
             @if($isInfographic)
                 <div class="yh-infographics__grid meu-stagger">
                     @foreach($yhTopics as $item)
-                        <a class="yh-infographic-card" href="{{ Helper::topicURL($item->id, '', $item) }}">
+                        <a class="yh-infographic-card{{ $item->photo_file ? ' galelry-lightbox' : '' }}"
+                           href="{{ $item->photo_file ? route('fileView', ['path' => 'topics/'.$item->photo_file]) : Helper::topicURL($item->id, '', $item) }}"
+                           @if($item->photo_file) data-gallery="yh-infographics-{{ $TopicBlock->id }}" title="{{ $yhTopicTitle($item) }}" @endif>
                             <figure>
                                 @if($item->photo_file)
-                                    <img src="{{ route('fileView', ['path' => 'topics/'.$item->photo_file]) }}" alt="" loading="lazy" decoding="async">
+                                    <img src="{{ route('fileView', ['path' => 'topics/'.$item->photo_file]) }}" alt="{{ $yhTopicTitle($item) }}" loading="lazy" decoding="async">
                                 @else
                                     <span class="yh-infographic-card__placeholder"><i class="fa-regular fa-image"></i></span>
                                 @endif
-                                <b class="yh-infographic-card__number">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</b>
                                 <span class="yh-infographic-card__expand" aria-hidden="true"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></span>
                             </figure>
-                            <div class="yh-infographic-card__copy">
-                                <small><i></i>{{ __('yemen_home.visuals_infographic') }}</small>
+                            {{--<div class="yh-infographic-card__copy">
+                                 <small><i></i>{{ __('yemen_home.visuals_infographic') }}</small>
                                 <h3>{{ $yhTopicTitle($item) }}</h3>
                                 <footer>
                                     <time>{{ $item->date }}</time>
                                     <i class="fa-solid fa-arrow-{{ @Helper::currentLanguage()->right }}-long" aria-hidden="true"></i>
                                 </footer>
-                            </div>
+                            </div> --}}
                         </a>
                     @endforeach
                 </div>

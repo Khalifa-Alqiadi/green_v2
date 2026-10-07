@@ -39,14 +39,16 @@
                                         <span class="hero-slide-brand">{{ $featuredSliderLabel }}</span>
                                         <span class="hero-slide-count">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }} <small>/ {{ str_pad((string) $featuredSlideCount, 2, '0', STR_PAD_LEFT) }}</small></span>
                                     </div>
-                                    <h2 class="slider-title">{{ $featuredTitle }}</h2>
-                                    @if($featuredDetails)
+                                    <h2 class="slider-title">
+                                        <a href="{{$featuredUrl}}">{{ $featuredTitle }}</a>
+                                    </h2>
+                                    {{-- @if($featuredDetails)
                                         <p class="slider-details">{{ $featuredDetails }}</p>
-                                    @endif
-                                    <a href="{{ $featuredUrl }}" class="btn-theme slider-link">
+                                    @endif --}}
+                                    {{-- <a href="{{ $featuredUrl }}" class="btn-theme slider-link">
                                         <span>{{ __('yemen_home.news_read') }}</span>
                                         <i class="bi bi-arrow-{{ @Helper::currentLanguage()->right }}" aria-hidden="true"></i>
-                                    </a>
+                                    </a> --}}
                                     @if($featuredSliderAutoplay && $featuredSlideCount > 1)
                                         <div class="hero-slide-progress" aria-hidden="true"><span></span></div>
                                     @endif

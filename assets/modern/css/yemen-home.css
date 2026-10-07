@@ -373,7 +373,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .yh-topic-block--infographics .yh-section-head__eyebrow { color: var(--brand-line); }
 .yh-infographics__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .yh-infographic-card { display: block; overflow: hidden; color: #fff !important; background: color-mix(in srgb, var(--brand-secondary) 80%, #fff 4%); }
-.yh-infographic-card figure { position: relative; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; background: var(--brand-secondary); }
+.yh-infographic-card figure { position: relative; aspect-ratio: 4 / 7; margin: 0; overflow: hidden; background: var(--brand-secondary); }
 .yh-infographic-card figure > span { position: absolute; inset-block-start: 14px; inset-inline-end: 14px; display: grid; width: 34px; height: 34px; place-items: center; color: #fff; border-radius: 50%; background: color-mix(in srgb, var(--brand-secondary-dark) 75%, transparent); opacity: 0; transition: opacity .2s ease; }
 .yh-infographic-card:hover figure > span { opacity: 1; }
 .yh-infographic-card > div { padding: 17px 18px 20px; }
