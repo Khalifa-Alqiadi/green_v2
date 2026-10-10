@@ -40,7 +40,7 @@ return [
     'news_desk' => 'News desk',
     'opinions_eyebrow' => 'Pens and Perspectives',
     'opinions_title' => 'Articles and Research',
-    'opinions_all' => 'All articles',
+    'opinions_all' => 'More',
     'opinions_category' => 'Articles',
     'opinions_editorial_team' => 'Editorial team',
     'opinions_also_in' => 'Also in :category',

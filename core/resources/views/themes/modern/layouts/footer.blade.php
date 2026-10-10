@@ -73,7 +73,7 @@ $footerLegalLinks = \App\Helpers\SiteMenu::List((int) (Helper::GeneralWebmasterS
                             ?>
                         @if(count($MenuLinks) <= $max_menu_cols)
                             @foreach($MenuLinks as $MenuLink)
-                                <div class="col-lg-2 col-md-6 footer-links">
+                                <div class="col-lg-2 col-md-6 col-6 footer-links">
                                     <div class="footer-title">
                                         <h3>{{ @$MenuLink->title }}</h3>
                                     </div>
@@ -101,7 +101,7 @@ $footerLegalLinks = \App\Helpers\SiteMenu::List((int) (Helper::GeneralWebmasterS
                                 @php($mi++)
                             @endforeach
                         @elseif(count($MenuLinks) > $max_menu_cols)
-                            <div class="col-lg-2 col-md-6 footer-links">
+                            <div class="col-lg-2 col-md-6 col-6 footer-links">
                                 <div class="footer-title">
                                     <h3>{{ __('frontend.quickLinks') }}</h3>
                                 </div>

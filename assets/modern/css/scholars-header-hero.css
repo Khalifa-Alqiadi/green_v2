@@ -1478,8 +1478,8 @@ main.fixed-top-margin {
 
     .breadcrumbs,
     .meu-topic-view .topic-hero {
-        min-height: 210px;
-        padding: 48px 0 !important;
+        min-height: auto;
+        padding: 39px 0 !important;
     }
 
     #content,

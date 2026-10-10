@@ -43,10 +43,8 @@
                         @endif
                     </a>
                     <div class="yh-news-ledger__feature-copy">
-                        <span class="yh-news-ledger__feature-label">{{ __('yemen_home.news_featured') }}</span>
                         <div class="yh-news-ledger__feature-meta">
                             <span>{{ $leadCategoryTitle }}</span>
-                            @if($lead->date)<time>{{ $lead->date }}</time>@endif
                         </div>
                         <h3><a href="{{ Helper::topicURL($lead->id, '', $lead) }}">{{ $yhTopicTitle($lead) }}</a></h3>
                         @if($yhTopicDetails($lead))
@@ -62,7 +60,6 @@
                 @if($recentTopics->isNotEmpty())
                     <aside class="yh-news-ledger__latest" aria-label="{{ __('yemen_home.news_latest') }}">
                         <div class="yh-news-ledger__latest-head">
-                            <span>{{ __('yemen_home.news_desk') }}</span>
                             <h3>{{ __('yemen_home.news_latest') }}</h3>
                         </div>
                         <div class="yh-news-ledger__latest-list">
@@ -84,7 +81,6 @@
                                     <span class="yh-news-ledger__latest-copy">
                                         <small>{{ $categoryTitle }}</small>
                                         <strong>{{ $yhTopicTitle($item) }}</strong>
-                                        @if($item->date)<time>{{ $item->date }}</time>@endif
                                     </span>
                                     <i class="fa-solid fa-arrow-{{ @Helper::currentLanguage()->right }}-long" aria-hidden="true"></i>
                                 </a>

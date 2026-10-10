@@ -40,7 +40,7 @@ return [
     'news_desk' => 'غرفة الأخبار',
     'opinions_eyebrow' => 'أقلام ورؤى',
     'opinions_title' => 'مقالات وأبحاث',
-    'opinions_all' => 'كل المقالات',
+    'opinions_all' => 'المزيد',
     'opinions_category' => 'مقالات',
     'opinions_editorial_team' => 'فريق التحرير',
     'opinions_also_in' => 'أيضًا في :category',

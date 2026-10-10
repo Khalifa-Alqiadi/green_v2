@@ -71,6 +71,7 @@
 <link href="{{ theme_asset('css/yemen-categories.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-categories.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('css/yemen-detail-tuning.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-detail-tuning.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('css/yemen-videos.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-videos.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/mobile-responsive.css') }}?v={{ @filemtime(base_path('../assets/modern/css/mobile-responsive.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 
 <!-- Favicon and Touch Icons -->
 @if(Helper::GeneralSiteSettings("style_fav") !="")

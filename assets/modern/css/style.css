@@ -339,7 +339,11 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     line-height: 0;
     transition: .5s;
-    margin-top: -15px
+    margin-top: -15px;
+    font-size: 25px;
+    border: 1px solid #f0f0f0;
+    padding: 2px;
+    background: #fff;
 }
 
 #footer .copyright, .mobile-nav-toggle.bi-x {
@@ -365,7 +369,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-mobile .mobile-nav-toggle {
     position: absolute;
-    top: 65px;
+    top: 14px;
     right: 35px;
     font-size: 25px;
     border: 1px solid #f0f0f0;
