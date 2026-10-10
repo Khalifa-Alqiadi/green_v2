@@ -17,7 +17,7 @@
         <time class="yh-news-list__date" datetime="{{ $Topic->date }}">{{ $Topic->date }}</time>
         <h2><a href="{{ $newsUrl }}">{{ $newsTitle }}</a></h2>
         @if($newsDetails)
-            <p>{{ \Illuminate\Support\Str::limit($newsDetails, 170) }}</p>
+            <p>{!! str_replace('"', " ", \Illuminate\Support\Str::limit($newsDetails, 170)) !!}</p>
         @endif
         {{-- <a class="yh-news-list__read" href="{{ $newsUrl }}">{{ __('frontend.moreDetails') }}
             <i class="fa-solid fa-arrow-{{ @Helper::currentLanguage()->right }}-long" aria-hidden="true"></i>

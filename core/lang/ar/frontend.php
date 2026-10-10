@@ -57,6 +57,8 @@ return array (
   'quantity' => 'الكمية',
   'quickLinks' => 'روابط سريعة',
   'readAlso' => 'إقرأ أيضاً',
+  'watchVideo' => 'شاهد الفيديو',
+  'relatedVideos' => 'فيديوهات ذات صلة',
   'readMore' => ' إقرأ المزيد ',
   'refresh' => 'تحديث',
   'search' => 'بحث عن...',

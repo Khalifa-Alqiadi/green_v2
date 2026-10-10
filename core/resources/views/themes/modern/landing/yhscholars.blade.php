@@ -54,7 +54,6 @@
                         $initial = mb_substr($nameWithoutPrefix ?: $scholarName, 0, 1);
                     @endphp
                     <a class="yh-scholar-atlas__card" href="{{ Helper::topicURL($item->id, '', $item) }}">
-                        <span class="yh-scholar-atlas__card-number">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                         <span class="yh-scholar-atlas__portrait">
                             @if($item->photo_file)
                                 <img src="{{ route('fileView', ['path' => 'topics/'.$item->photo_file]) }}" alt="" loading="lazy" decoding="async">
@@ -66,7 +65,7 @@
                             <small>{{ __('yemen_home.scholars_biography') }}</small>
                             <strong>{{ $scholarName }}</strong>
                             @if($yhTopicDetails($item))
-                                <em>{{ \Illuminate\Support\Str::limit(strip_tags($yhTopicDetails($item)), 100) }}</em>
+                                <em>{!! str_replace('"', " ", \Illuminate\Support\Str::limit(strip_tags($yhTopicDetails($item)), 100)) !!}</em>
                             @endif
                         </span>
                         <span class="yh-scholar-atlas__card-foot">

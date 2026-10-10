@@ -70,6 +70,7 @@ if (@$TopicBlockContents->module_id) {
                             @endif
                         </span>
                         <span class="yh-category-card__copy">
+                            <i class="yh-identity-diamond" aria-hidden="true"></i>
                             <strong>{{ $title }}</strong>
                             @if(trim(strip_tags((string) $details)) !== '')
                                 <span>{{ \Illuminate\Support\Str::limit(trim(strip_tags((string) $details)), 140) }}</span>

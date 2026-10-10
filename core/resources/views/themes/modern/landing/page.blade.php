@@ -21,8 +21,10 @@
     $custom_css_code .= $Topic->css_code;
     $custom_js_code .= $Topic->js_code;
     $custom_body_code .= $Topic->body_code;
+    $i = 1;
     ?>
     <div class="landing-page">
+
 
         @if($Topic->topicBlocks->where("status",1)->count() >0)
             @foreach($Topic->topicBlocks->where("status",1) as $TopicBlock)
@@ -33,6 +35,7 @@
                         } catch (Exception $e) {
                             $TopicBlockContents = [];
                         }
+                        $i++;
 
                         // Stable hooks let every homepage block keep its own visual identity
                         // while preserving any custom classes configured in the dashboard.
@@ -42,6 +45,10 @@
                             ? ' topic-block--module-'.(int) @$TopicBlockContents->module_id
                             : '';
                         ?>
+                    @if($i == 3)
+                        {{-- <div class="scholars-ornament" aria-hidden="true"><span></span></div> --}}
+
+                    @endif
                     <div class="topic-block topic-block--{{ (int) $TopicBlock->id }} topic-block--type-{{ (int) $TopicBlock->type }}{{ $blockViewClass }}{{ $blockModuleClass }}"
                          data-topic-block="{{ (int) $TopicBlock->id }}"
                          @if($blockViewStyle !== '') data-topic-view="{{ $blockViewStyle }}" @endif>

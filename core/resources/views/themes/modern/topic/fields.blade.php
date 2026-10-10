@@ -296,8 +296,8 @@
                                 <h5 class="custom-field-title">{!!  $cf_title !!}</h5>
                                 <div class="custom-field-value card mb-3 py-2 px-3 rounded-2">
                                     @if (strpos($cf_saved_val, 'http') === 0)
-                                        <a href="{{ $cf_saved_val }}" target="_blank"><i
-                                                class="fa-solid fa-arrow-up-right-from-square"></i> {{ $cf_saved_val }}
+                                        <a href="{{ $cf_saved_val }}" target="_blank" rel="noopener noreferrer" class="{{ (int) $Topic->webmaster_id === 18 ? 'yh-magazine-browse' : '' }}"><i
+                                                class="fa-solid fa-arrow-up-right-from-square"></i> {{ (int) $Topic->webmaster_id === 18 ? __('yemen_home.magazine_read') : $cf_saved_val }}
                                         </a>
                                     @else
                                         {!! Helper::ParseLinks($cf_saved_val) !!}

@@ -876,9 +876,14 @@ h1, h2, h3, h4, h5, h6,
     display: none;
 }
 
-.scholars-ornament {
+.landing-page{
     position: relative;
-    height: 7px;
+}
+
+.scholars-ornament {
+    position: absolute;
+    height: 50px;
+    width: 100%;
     overflow: hidden;
     background: var(--brand-secondary);
 }
@@ -895,7 +900,7 @@ h1, h2, h3, h4, h5, h6,
     background:
         linear-gradient(135deg, transparent 37%, var(--brand-primary) 38% 62%, transparent 63%) 0 0 / 28px 14px,
         linear-gradient(45deg, transparent 37%, var(--brand-primary) 38% 62%, transparent 63%) 14px 0 / 28px 14px;
-    opacity: .96;
+    opacity: .36;
 }
 
 .scholars-ornament::after {
@@ -2102,8 +2107,6 @@ main.fixed-top-margin {
         min-height: 0;
         max-height: min(620px, calc(100vh - 150px));
         padding: 14px;
-        overflow-x: hidden;
-        overflow-y: auto;
         border: 1px solid color-mix(in srgb, var(--brand-secondary) 9%, transparent);
         border-top: 3px solid var(--brand-primary);
         border-radius: 0 0 18px 18px;

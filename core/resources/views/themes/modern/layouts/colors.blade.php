@@ -721,6 +721,6 @@ $hero_shadow_color = Helper::colorHexToDarken($style_color2, 3.2);
         color: {{ Helper::GeneralSiteSettings("style_color1") }} !important;
     }
     #footer.modern-footer--light .social-links a:hover{
-        color: {{ Helper::GeneralSiteSettings("style_color3") }} !important;
+        color: {{ Helper::GeneralSiteSettings("style_color1") }} !important;
     }
 </style>

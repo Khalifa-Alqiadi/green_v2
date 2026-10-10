@@ -1234,6 +1234,64 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .yh-news-court__item footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 11px; color: var(--scholars-muted); border-top: 1px solid color-mix(in srgb, var(--brand-secondary) 10%, transparent); font-size: .62rem; }
 .yh-news-court__item footer i { color: var(--brand-primary); }
 
+.yh-news-ledger__head,
+.modern-footer,
+.yh-categories__head,
+.yh-author-articles__head,
+.yh-section-head,
+.yh-scholar-atlas__head{
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.scholars-header .scholars-ornament-header{
+    background-image: url("../images/download.svg");
+    background-size: 56px 56px;
+    /* -webkit-mask-image: linear-gradient(to right, #000, transparent 70%);
+    mask-image: linear-gradient(to right, #000, transparent 70%); */
+    inset: 0;
+    z-index: -1;
+    opacity: .30;
+    position: absolute;
+    content: "";
+}
+.yh-news-ledger__head::before,
+.yh-categories__head::before,
+.yh-author-articles__head::before,
+.yh-section-head::before,
+.yh-scholar-atlas__head::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .30;
+    background-image: url("../images/download.svg");
+    background-size: 56px 56px;
+    -webkit-mask-image: linear-gradient(to right, #000, transparent 100%);
+    mask-image: linear-gradient(to right, #000, transparent 100%);
+}
+
+.modern-footer::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .16;
+    background-image: url("../images/download.svg");
+}
+
+.scholars-ornament2{
+    position: absolute;
+    background-image: url("../images/download.svg");
+    background-size: 56px 56px;
+    -webkit-mask-image: linear-gradient(to right, #000, transparent 70%);
+    mask-image: linear-gradient(to right, #000, transparent 70%);
+    inset: 0;
+    z-index: -1;
+    opacity: .16;
+}
+
 @media (max-width: 1199.98px) {
     .yh-news-court__lead-copy { width: min(620px, 62%); }
     .yh-news-court__stream { width: calc(100% - 34px); grid-template-columns: 145px repeat(3, minmax(0, 1fr)); }

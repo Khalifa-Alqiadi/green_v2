@@ -6,8 +6,8 @@
 
 <header id="header"
         class="scholars-header {{ Helper::GeneralSiteSettings('style_header') ? 'fixed-top' : '' }} {{ Helper::GeneralSiteSettings('style_bg_type') ? 'header-no-bg' : 'header-bg' }}">
-    {{-- <div class="scholars-ornament" aria-hidden="true"><span></span></div> --}}
 
+    <div class="scholars-ornament-header"></div>
     <div class="scholars-masthead">
         <div class="container d-flex align-items-center justify-content-between">
             <a class="scholars-brand" href="{{ Helper::homeURL() }}" aria-label="{{ $headerSiteTitle }}">

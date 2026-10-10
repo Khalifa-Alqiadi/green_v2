@@ -172,6 +172,8 @@ class TopicsController extends Controller
                     $columns[] = $title_var;
                 } elseif ($KEY == "col_date") {
                     $columns[] = "date";
+                } elseif ($KEY == "col_authors") {
+                    $columns[] = "id";
                 } elseif ($KEY == "col_expire_date") {
                     $columns[] = "expire_date";
                 } elseif ($KEY == "col_visits") {
@@ -265,6 +267,7 @@ class TopicsController extends Controller
             'user',
             'updated_user',
             'fields',
+            'authors',
         ]);
         $Topics = $Topics->get();
 
@@ -507,6 +510,11 @@ class TopicsController extends Controller
                         }
                     } elseif ($KEY == "col_date") {
                         $Cell_Value = Helper::formatDate($Topic->date);
+                    } elseif ($KEY == "col_authors") {
+                        $authorNameColumn = 'name_'.(Helper::currentLanguage()->code ?? config('smartend.default_language'));
+                        $Cell_Value = e($Topic->authors->where('status', true)->map(function ($author) use ($authorNameColumn) {
+                            return $author->{$authorNameColumn} ?: $author->name_ar;
+                        })->filter()->join('، '));
                     } elseif ($KEY == "col_expire_date") {
                         $Cell_Value = "<div ".(($Topic->expire_date < date("Y-m-d")) ? "style='color:red'" : "").">".Helper::formatDate($Topic->expire_date)."</div>";
                     } elseif ($KEY == "col_visits") {

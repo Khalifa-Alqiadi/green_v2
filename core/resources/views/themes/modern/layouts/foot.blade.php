@@ -18,7 +18,7 @@
 <!-- Template Main JS File -->
 <script src="{{ theme_asset('js/main.js') }}?v={{ Helper::system_version() }}"></script>
 <script src="{{ theme_asset('js/staff-slider.js') }}?v={{ Helper::system_version() }}"></script>
-<script src="{{ theme_asset('js/works-slider.js') }}?v={{ Helper::system_version() }}"></script>
+<script src="{{ theme_asset('js/works-slider.js') }}?v={{ @filemtime(base_path('../assets/modern/js/works-slider.js')) ?: Helper::system_version() }}"></script>
 <script src="{{ theme_asset('js/testimonials-marquee.js') }}?v={{ Helper::system_version() }}"></script>
 <script src="{{ theme_asset('js/partners-marquee.js') }}?v={{ Helper::system_version() }}"></script>
 <script src="{{ theme_asset('js/motion.js') }}?v={{ Helper::system_version() }}"></script>

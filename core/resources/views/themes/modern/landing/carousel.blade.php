@@ -17,15 +17,17 @@ if (@$TopicBlock->image_status && @$TopicBlockContents->{"bg_".@Helper::currentL
 }
 $BlockTopics = [];
 $section_url = "";
+$isMagazineCarousel = (int) (@$TopicBlockContents->module_id) === 18;
 if (@$TopicBlockContents->module_id) {
     $BlockTopics = Helper::Topics(@$TopicBlockContents->module_id, @$TopicBlockContents->category_ids,
         @$TopicBlockContents->records_count, 0, @$TopicBlockContents->records_order);
     $section_url = Helper::sectionURL(@$TopicBlockContents->module_id);
 }
+$isVideoCarousel = (int) data_get(collect($BlockTopics)->first(), 'webmasterSection.type') === 2;
 ?>
 
 @if(count($BlockTopics) >0)
-    <section id="landing-block-{{ @$TopicBlock->id }}" class="landing-block modern-works {{ @$TopicBlock->css_classes  }}" style="{{ $block_style }}">
+    <section id="landing-block-{{ @$TopicBlock->id }}" class="landing-block modern-works{{ $isMagazineCarousel ? ' modern-works--magazine' : '' }}{{ $isVideoCarousel ? ' yh-video-showcase' : '' }} {{ @$TopicBlock->css_classes  }}" style="{{ $block_style }}">
         <div class="container">
             @if(@$TopicBlock->title_status || @$TopicBlock->desc_status)
                 <div class="section-title">
@@ -37,7 +39,7 @@ if (@$TopicBlockContents->module_id) {
                     @endif
                 </div>
             @endif
-            <div class="modern-works-slider swiper">
+            <div class="modern-works-slider{{ $isMagazineCarousel ? ' modern-works-slider--magazine' : '' }}{{ $isVideoCarousel ? ' modern-works-slider--videos' : '' }} swiper">
                 <div class="swiper-wrapper">
                     @foreach($BlockTopics as $Topic)
                             <?php
@@ -58,7 +60,13 @@ if (@$TopicBlockContents->module_id) {
                             }
                             ?>
                         <div class="swiper-slide modern-works-slide">
-                            @include(theme_view("topic.works-card"),["Topic"=>$Topic])
+                            @if($isVideoCarousel)
+                                @include(theme_view('topic.video-card'), ['Topic' => $Topic])
+                            @elseif($isMagazineCarousel)
+                                @include(theme_view('topic.magazine-card'), ['Topic' => $Topic])
+                            @else
+                                @include(theme_view("topic.works-card"),["Topic"=>$Topic])
+                            @endif
                         </div>
                     @endforeach
                 </div>

@@ -8,6 +8,7 @@ $footer_logo = Helper::GeneralSiteSettings('style_footer_logo') ?: Helper::Gener
 $contact_address = Helper::GeneralSiteSettings("contact_t1_" . @Helper::currentLanguage()->code);
 $contact_phone = Helper::GeneralSiteSettings("contact_t3");
 $contact_email = Helper::GeneralSiteSettings("contact_t6");
+$footerLegalLinks = \App\Helpers\SiteMenu::List((int) (Helper::GeneralWebmasterSettings(33) ?: 33));
 ?>
 <footer id="footer" class="modern-footer modern-footer--light pt-5">
     @if(Helper::GeneralSiteSettings("style_footer")==1)
@@ -132,7 +133,14 @@ $contact_email = Helper::GeneralSiteSettings("contact_t6");
     @endif
     <div class="footer-bottom">
         <div class="container py-4">
-            <div class="modern-footer-bottom-inner text-center d-block">
+            <div class="modern-footer-bottom-inner">
+                @if(count($footerLegalLinks))
+                    <nav class="modern-footer-legal" aria-label="{{ __('frontend.quickLinks') }}">
+                        @foreach($footerLegalLinks as $LegalLink)
+                            <a href="{{ data_get($LegalLink, 'url') }}" target="{{ data_get($LegalLink, 'target') }}">{{ data_get($LegalLink, 'title') }}</a>
+                        @endforeach
+                    </nav>
+                @endif
                 <div class="copyright">
                     &copy; <?php echo date("Y") ?> {{ __('frontend.AllRightsReserved') }}
                     . {{Helper::GeneralSiteSettings($site_title_var)}}

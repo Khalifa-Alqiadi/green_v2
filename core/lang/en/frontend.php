@@ -15,6 +15,8 @@ return [
     'viewMore' => 'View More',
     'readMore' => 'Read More',
     'readAlso' => 'Read also',
+    'watchVideo' => 'Watch video',
+    'relatedVideos' => 'Related videos',
     'downloadAttach' => 'Download Attachment',
     'contactDetails' => 'Contact Details',
     'callUs' => 'Call Us',

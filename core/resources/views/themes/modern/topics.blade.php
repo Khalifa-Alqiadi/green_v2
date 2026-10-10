@@ -52,6 +52,10 @@
         }
         $Category_description = null;
         $isNewsSection = (int) (@$WebmasterSection->id) === 3;
+        $isMagazineSection = (int) (@$WebmasterSection->id) === 18;
+        $isScholarSection = (int) (@$WebmasterSection->id) === 15;
+        $isVideoSection = (int) (@$WebmasterSection->type) === 2;
+        $isCatalogSection = $isMagazineSection || $isScholarSection || $isVideoSection;
         if (trim(@$CurrentCategory->$details_var) != "") {
             $Category_description = @$CurrentCategory->$details_var;
         }
@@ -59,9 +63,9 @@
             $Category_description = @$TagDescription;
         }
         ?>
-        @if($category_image !="")
+        {{-- @if($category_image !="")
             @include(theme_view("topic.cover"))
-        @endif
+        @endif --}}
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
@@ -96,20 +100,43 @@
             </div>
         </section>
         <section id="content">
+            <div class="scholars-ornament2"></div>
             <div class="container">
                 <div class="row">
-                    @if(@count($Categories)>0)
+                    @if(@count($Categories)>0 && !$isCatalogSection)
                         @include(theme_view('layouts.side'), ['hideMostViewed' => $isNewsSection])
                     @endif
                     <div
-                        class="col-lg-{{(@count($Categories)>0)? "9":"12"}} col-md-{{(@count($Categories)>0)? "7":"12"}} col-sm-12 col-xs-12">
+                        class="col-lg-{{(@count($Categories)>0 && !$isCatalogSection)? "9":"12"}} col-md-{{(@count($Categories)>0 && !$isCatalogSection)? "7":"12"}} col-sm-12 col-xs-12">
+                        @if($isCatalogSection)
+                            <div class="yh-catalog-intro">
+                                <span class="yh-catalog-intro__mark" aria-hidden="true"></span>
+                                <div>
+                                    <h2>{{ $page_title }}</h2>
+                                </div>
+                                @if($isScholarSection)
+                                    <form method="GET" action="{{ Helper::sectionURL($WebmasterSection->id) }}" class="yh-catalog-search">
+                                        <label class="visually-hidden" for="scholar-catalog-search">{{ __('frontend.search') }}</label>
+                                        <input id="scholar-catalog-search" type="search" name="search_word" value="{{ request('search_word') }}" placeholder="{{ __('frontend.search') }}">
+                                        <button type="submit" aria-label="{{ __('frontend.search') }}"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    </form>
+                                @endif
+                            </div>
+                            @if(@count($Categories)>0)
+                                <nav class="yh-catalog-categories" aria-label="{{ __('frontend.categories') }}">
+                                    @foreach($Categories as $CatalogCategory)
+                                        <a href="{{ Helper::categoryURL($CatalogCategory->id, '', $CatalogCategory) }}" class="{{ (int) (@$CurrentCategory->id) === (int) $CatalogCategory->id ? 'is-active' : '' }}">{{ $CatalogCategory->$title_var ?: $CatalogCategory->$title_var2 }}</a>
+                                    @endforeach
+                                </nav>
+                            @endif
+                        @endif
                         @if($Topics->total() == 0)
                             <div class="p-5 card text-center no-data">
                                 <i class="fa fa-desktop fa-5x opacity-50"></i>
                                 <h5 class="mt-3 text-muted">{{ __('frontend.noData') }}</h5>
                             </div>
                         @else
-                            <div class="{{ $isNewsSection ? 'yh-news-list' : 'row' }}">
+                            <div class="{{ $isNewsSection ? 'yh-news-list' : ($isMagazineSection ? 'yh-issue-grid' : ($isScholarSection ? 'yh-scholar-grid' : ($isVideoSection ? 'yh-video-grid' : 'row'))) }}">
                                 @if($Topics->total() > 0)
 
                                         <?php
@@ -118,6 +145,10 @@
                                         if (count($Categories) > 0) {
                                             $cols_lg = 6;
                                             $cols_md = 12;
+                                        }
+                                        if ((int) (@$WebmasterSection->id) === 15) {
+                                            $cols_lg = 6;
+                                            $cols_md = 6;
                                         }
                                         ?>
                                     @foreach($Topics as $Topic)
@@ -137,6 +168,12 @@
                                             ?>
                                         @if($isNewsSection)
                                             @include(theme_view('topic.news-list-card'), ['Topic' => $Topic])
+                                        @elseif($isMagazineSection)
+                                            @include(theme_view('topic.magazine-card'), ['Topic' => $Topic])
+                                        @elseif($isScholarSection)
+                                            @include(theme_view('topic.scholar-card'), ['Topic' => $Topic])
+                                        @elseif($isVideoSection)
+                                            @include(theme_view('topic.video-card'), ['Topic' => $Topic])
                                         @else
                                             <div class="col-lg-{{$cols_lg}} col-md-{{$cols_md}}">
                                                 @include(theme_view("topic.card"),["Topic"=>$Topic])

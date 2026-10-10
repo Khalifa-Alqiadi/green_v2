@@ -9,7 +9,6 @@
             <div class="yh-books__grid meu-stagger">
                 @foreach($yhTopics as $item)
                     <a class="yh-book" href="{{ Helper::topicURL($item->id, '', $item) }}">
-                        <span class="yh-book__number">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                         <div class="yh-book__cover">
                             @if($item->photo_file)
                                 <img src="{{ route('fileView', ['path' => 'topics/'.$item->photo_file]) }}" alt="" loading="lazy" decoding="async">

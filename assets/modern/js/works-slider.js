@@ -15,6 +15,9 @@
 
             const slideCount = slider.querySelectorAll(".swiper-slide").length;
             const controls = slider.querySelector(".modern-works-slider-controls");
+            const isMagazine = slider.classList.contains("modern-works-slider--magazine");
+            const isVideos = slider.classList.contains("modern-works-slider--videos");
+            const isSpecialSlider = isMagazine || isVideos;
 
             if (slideCount <= 1) {
                 slider.classList.add("is-static");
@@ -27,8 +30,8 @@
                 watchOverflow: true,
                 centerInsufficientSlides: true,
                 grabCursor: slideCount > 1,
-                loop: slideCount > 2,
-                rewind: slideCount > 1 && slideCount <= 2,
+                loop: !isSpecialSlider && slideCount > 2,
+                rewind: isVideos ? slideCount > 4 : (isMagazine ? slideCount > 3 : (slideCount > 1 && slideCount <= 2)),
                 autoplay: slideCount > 1 && !prefersReducedMotion ? {
                     delay: 4500,
                     disableOnInteraction: false,
@@ -52,8 +55,8 @@
                         spaceBetween: 20
                     },
                     1200: {
-                        slidesPerView: 2,
-                        spaceBetween: 28
+                        slidesPerView: isVideos ? 4 : (isMagazine ? 3 : 2),
+                        spaceBetween: isVideos ? 18 : 28
                     }
                 }
             });

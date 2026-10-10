@@ -69,6 +69,8 @@
 <link href="{{ theme_asset('css/scholars-compact-header.css') }}?v={{ @filemtime(base_path('../assets/modern/css/scholars-compact-header.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('css/yemen-author-articles.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-author-articles.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ theme_asset('css/yemen-categories.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-categories.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-detail-tuning.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-detail-tuning.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ theme_asset('css/yemen-videos.css') }}?v={{ @filemtime(base_path('../assets/modern/css/yemen-videos.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 
 <!-- Favicon and Touch Icons -->
 @if(Helper::GeneralSiteSettings("style_fav") !="")

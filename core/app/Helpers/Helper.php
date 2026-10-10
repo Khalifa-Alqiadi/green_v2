@@ -1351,6 +1351,14 @@ class Helper
                     "custom" => 0,
                 ];
             }
+            if ($WebmasterSection->authors_status && Helper::GeneralWebmasterSettings('authors_status')) {
+                $COLS['col_authors'] = [
+                    'title' => __('backend.authors'),
+                    'sortable' => 0,
+                    'default' => 1,
+                    'custom' => 0,
+                ];
+            }
             if ($WebmasterSection->expire_date_status) {
                 $COLS["col_expire_date"] = [
                     "title" => __('backend.expireDate'),
@@ -1482,6 +1490,9 @@ class Helper
                     $ColsList[$KEY] = $COL;
                 }
             }
+        }
+        if (isset($AllCols['col_authors']) && !array_key_exists('col_authors', $MyCols)) {
+            $ColsList['col_authors'] = $AllCols['col_authors'];
         }
         return $ColsList;
     }

@@ -69,6 +69,10 @@
         $custom_body_code .= $Topic->body_code;
 
         $attach_file = @$Topic->attach_file;
+        $isNewsDetail = (int) (@$WebmasterSection->id) === 3;
+        $isMagazineDetail = (int) (@$WebmasterSection->id) === 18;
+        $isScholarDetail = (int) (@$WebmasterSection->id) === 15;
+        $isVideoDetail = (int) (@$WebmasterSection->type) === 2;
         if (@$Topic->attach_file != "") {
             $file_ext = strrchr($Topic->attach_file, ".");
             $file_ext = strtolower($file_ext);
@@ -78,9 +82,9 @@
             }
         }
         ?>
-        @if($category_image !="")
+        {{-- @if($category_image !="")
             @include(theme_view("topic.cover"))
-        @endif
+        @endif --}}
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
@@ -112,13 +116,14 @@
             </div>
         @endif
         <section id="content">
-            <div class="container topic-page">
+            <div class="scholars-ornament2"></div>
+            <div class="container topic-page{{ $isNewsDetail ? ' topic-page--news' : '' }}{{ $isMagazineDetail ? ' topic-page--magazine' : '' }}{{ $isScholarDetail ? ' topic-page--scholar' : '' }}{{ $isVideoDetail ? ' topic-page--video' : '' }}">
                 <div class="row">
-                    @if($Categories->count() >1)
-                        @include(theme_view('layouts.side'))
+                    @if($Categories->count() >1 && !$isVideoDetail)
+                        @include(theme_view('layouts.side'), ['hideMostViewed' => $isNewsDetail])
                     @endif
                     <div
-                        class="col-lg-{{($Categories->count()>1)? "9":"12"}} col-md-{{($Categories->count()>1)? "7":"12"}} col-sm-12 col-xs-12">
+                        class="col-lg-{{ $isVideoDetail ? '9' : (($Categories->count()>1)? '9':'12') }} col-md-{{ $isVideoDetail ? '12' : (($Categories->count()>1)? '7':'12') }} col-sm-12 col-xs-12">
                         <article class="mb-5">
                             @if($WebmasterSection->type==2 && $Topic->video_file!="")
                                 {{--video--}}
@@ -141,8 +146,9 @@
                                             @if($Youtube_id !="")
                                                 {{-- Youtube Video --}}
                                                 <iframe allowfullscreen class="video-iframe"
-                                                        src="https://www.youtube.com/embed/{{ $Youtube_id }}?autoplay=1&mute=1"
-                                                        allow="autoplay">
+                                                        src="https://www.youtube.com/embed/{{ $Youtube_id }}?rel=0&amp;modestbranding=1"
+                                                        title="{{ $title }}"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
                                                 </iframe>
                                             @endif
                                         @elseif($Topic->video_type ==2)
@@ -152,7 +158,8 @@
                                             @if($Vimeo_id !="")
                                                 {{-- Vimeo Video --}}
                                                 <iframe allowfullscreen class="video-iframe"
-                                                        src="https://player.vimeo.com/video/{{ $Vimeo_id }}?title=0&amp;byline=0">
+                                                        src="https://player.vimeo.com/video/{{ $Vimeo_id }}?title=0&amp;byline=0"
+                                                        title="{{ $title }}">
                                                 </iframe>
                                             @endif
 
@@ -163,7 +170,7 @@
                                             @endif
 
                                         @else
-                                            <video class="video-js" controls autoplay preload="auto" width="100%"
+                                            <video class="video-js" controls preload="metadata" width="100%"
                                                    height="500"
                                                    poster="{{ route("fileView",["path" =>'topics/'.$Topic->photo_file ]) }}"
                                                    data-setup="{}">
@@ -273,8 +280,11 @@
                                 </div>
                             @else
                                 {{--one photo--}}
+                                @if(($isMagazineDetail || $isScholarDetail) && $WebmasterSection->title_status)
+                                    <div class="post-heading"><h1>{{ $title }}</h1></div>
+                                @endif
                                 <div class="post-image">
-                                    @if($WebmasterSection->title_status)
+                                    @if($WebmasterSection->title_status && !$isMagazineDetail && !$isScholarDetail)
                                         <div class="post-heading">
                                             <h1>
                                                 @if($Topic->icon !="")
@@ -310,6 +320,16 @@
                                     @endif
                                 </div>
                             @endif
+                            @if($isNewsDetail && ($Topic->date || $Topic->source))
+                                <div class="yh-topic-meta">
+                                    @if($Topic->date)
+                                        <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time datetime="{{ $Topic->date }}">{{ Helper::formatDate($Topic->date) }}</time></span>
+                                    @endif
+                                    @if($Topic->source)
+                                        <span><i class="fa-solid fa-link" aria-hidden="true"></i>{{ __('backend.source') }}: {{ $Topic->source }}</span>
+                                    @endif
+                                </div>
+                            @endif
                             @if(Helper::GeneralWebmasterSettings('authors_status') && $Topic->authors->where('status', true)->isNotEmpty())
                                 <div class="modern-topic-authors">
                                     @include(theme_view('components.author-links'), ['authors' => $Topic->authors->where('status', true)])
@@ -333,7 +353,7 @@
                                     $file_ext = strrchr($Topic->attach_file, ".");
                                     $file_ext = strtolower($file_ext);
                                     ?>
-                                <div class="bottom-article">
+                                <div class="bottom-article{{ $isMagazineDetail ? ' yh-magazine-file' : '' }}">
                                     <a href="{{ route("fileView",["path" =>'topics/'.$Topic->attach_file ]) }}" target="_blank">
                                         <strong>
                                             {!! Helper::GetIcon(route("fileView",["path" =>'topics/'.$Topic->attach_file ])) !!}
@@ -372,9 +392,16 @@
 
                         {{-- @include(theme_view("topic.next_prev")) --}}
 
-                        @include(theme_view("topic.related"))
+                        @if(!$isVideoDetail)
+                            @include(theme_view("topic.related"))
+                        @endif
 
                     </div>
+                    @if($isVideoDetail)
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            @include(theme_view('topic.video-related'))
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -389,15 +416,6 @@
     @push('after-scripts')
         <script
             src="{{ theme_asset('vendor/video-js/js/video.min.js') }}?v={{ Helper::system_version() }}"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                GreenAudioPlayer.init({
-                    selector: '.audio-player',
-                    stopOthersOnPlay: true,
-                    showTooltips: true,
-                });
-            });
-        </script>
     @endpush
 @endif
 @if (@in_array(@$WebmasterSection->type, [3]) && !@$Topic->video_type)

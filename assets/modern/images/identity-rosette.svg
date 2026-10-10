@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="line" x1="0" y1="210" x2="420" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#bfa96c" stop-opacity=".46"/>
+      <stop offset=".55" stop-color="#aabfaa" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#bfa96c" stop-opacity=".12"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#line)" stroke-linejoin="round">
+    <path stroke-width="2" d="M210 18 251 107 345 75 313 169 402 210 313 251 345 345 251 313 210 402 169 313 75 345 107 251 18 210 107 169 75 75 169 107Z"/>
+    <path stroke-width="1.4" d="M210 40 247 124 328 92 296 173 380 210 296 247 328 328 247 296 210 380 173 296 92 328 124 247 40 210 124 173 92 92 173 124Z"/>
+    <path stroke-width="1.2" d="M210 72 270 150 348 210 270 270 210 348 150 270 72 210 150 150Z"/>
+    <path stroke-width="1.2" d="M210 72 270 150 348 210 270 270 210 348 150 270 72 210 150 150Z" transform="rotate(45 210 210)"/>
+    <circle cx="210" cy="210" r="87" stroke-width="1"/>
+    <circle cx="210" cy="210" r="48" stroke-width="1"/>
+    <path stroke-width="1" d="M210 145v130M145 210h130M164 164l92 92m0-92-92 92"/>
+  </g>
+</svg>

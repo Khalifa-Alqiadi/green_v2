@@ -80,7 +80,7 @@
 
                                 <div class="yh-article-column__body">
                                     <h3><a href="{{ Helper::topicURL($featuredArticle->id, '', $featuredArticle) }}">{{ $yhTopicTitle($featuredArticle) }}</a></h3>
-                                    <p>{{ \Illuminate\Support\Str::limit(strip_tags($yhTopicDetails($featuredArticle)), 118) }}</p>
+                                    <p>{!! str_replace('"', " ", \Illuminate\Support\Str::limit(strip_tags($yhTopicDetails($featuredArticle)), 118)) !!}</p>
                                     <footer>
                                         <span class="yh-article-column__author">{{ mb_substr($authorName, 0, 1) }}</span>
                                         <span><b>{{ $authorName }}</b><time>{{ $featuredArticle->date }}</time></span>

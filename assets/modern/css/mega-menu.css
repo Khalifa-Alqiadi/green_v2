@@ -116,17 +116,6 @@
         transition: color .2s ease, border-color .2s ease, gap .2s ease;
     }
 
-    #navbar .mega-menu-intro .mega-menu-more i {
-        color: var(--meu-accent, #2f7fd6);
-        font-size: 14px;
-    }
-
-    #navbar .mega-menu-intro .mega-menu-more:hover {
-        gap: 14px;
-        color: var(--meu-accent, #2f7fd6) !important;
-        border-bottom-color: var(--meu-accent, #2f7fd6);
-    }
-
     #navbar .mega-dropdown > .mega-menu > li:not(.mega-menu-intro) {
         grid-column: 2;
         min-width: 0;

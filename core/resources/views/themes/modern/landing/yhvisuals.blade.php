@@ -34,35 +34,28 @@
                     @endforeach
                 </div>
             @else
-                @php($featuredVisual = $yhTopics->first())
-                <div class="yh-video-wall meu-stagger">
-                    <a class="yh-video-wall__featured" href="{{ Helper::topicURL($featuredVisual->id, '', $featuredVisual) }}">
-                        @if($featuredVisual->photo_file)
-                            <img src="{{ route('fileView', ['path' => 'topics/'.$featuredVisual->photo_file]) }}" alt="" loading="lazy" decoding="async">
-                        @else
-                            <i class="fa-regular fa-image yh-video-wall__placeholder" aria-hidden="true"></i>
-                        @endif
-                        <span class="yh-video-wall__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
-                        <div><small>{{ __('yemen_home.visuals_coverage') }}</small><h3>{{ $yhTopicTitle($featuredVisual) }}</h3></div>
-                    </a>
-                    <div class="yh-video-wall__list">
-                        @foreach($yhTopics->slice(1, 3) as $item)
-                            <a href="{{ Helper::topicURL($item->id, '', $item) }}">
-                                <figure>
-                                    @if($item->photo_file)
-                                        <img src="{{ URL::asset('uploads/topics/'.$item->photo_file) }}" alt="" loading="lazy" decoding="async">
-                                    @else
-                                        <i class="fa-regular fa-image yh-video-wall__placeholder" aria-hidden="true"></i>
-                                    @endif
-                                    <span aria-hidden="true"><i class="fa-solid fa-play"></i></span>
-                                </figure>
-                                <span class="yh-video-wall__item-copy">
-                                    <small>{{ str_pad((string) ($loop->iteration + 1), 2, '0', STR_PAD_LEFT) }} / {{ __('yemen_home.visuals_coverage') }}</small>
-                                    <strong>{{ $yhTopicTitle($item) }}</strong>
-                                    <i class="fa-solid fa-arrow-{{ @Helper::currentLanguage()->right }}-long" aria-hidden="true"></i>
-                                </span>
-                            </a>
+                <div class="modern-works-slider modern-works-slider--videos swiper meu-stagger">
+                    <div class="swiper-wrapper">
+                        @foreach($yhTopics as $item)
+                            <div class="swiper-slide modern-works-slide">
+                                @include(theme_view('topic.video-card'), [
+                                    'Topic' => $item,
+                                    'title_var' => $yhTitleField,
+                                    'title_var2' => $yhFallbackTitleField,
+                                ])
+                            </div>
                         @endforeach
+                    </div>
+                    <div class="modern-works-slider-controls">
+                        <button type="button" class="modern-works-slider-button modern-works-slider-prev"
+                                aria-label="{{ html_entity_decode(__('pagination.previous')) }}">
+                            <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
+                        </button>
+                        <div class="modern-works-slider-pagination" aria-hidden="true"></div>
+                        <button type="button" class="modern-works-slider-button modern-works-slider-next"
+                                aria-label="{{ html_entity_decode(__('pagination.next')) }}">
+                            <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
             @endif
